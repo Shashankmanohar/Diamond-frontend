@@ -1,6 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "@/lib/supabase";
 import {
   Diamond, LogOut, Search, Filter, Trash2, Download,
   Calendar, Users, Mail, Phone, Clock, CheckCircle2,
@@ -42,46 +41,60 @@ const AdminDashboard = () => {
   }, []);
 
   const checkAuth = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) { navigate("/admin"); return; }
-
-    const { data: roleData } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", user.id)
-      .eq("role", "admin")
-      .maybeSingle();
-
-    if (!roleData) {
-      await supabase.auth.signOut();
+    const isAdmin = localStorage.getItem("admin_auth") === "true";
+    if (!isAdmin) {
       navigate("/admin");
     }
   };
 
   const fetchEnquiries = async () => {
     setLoading(true);
-    const { data, error } = await supabase
-      .from("enquiries")
-      .select("*")
-      .order("created_at", { ascending: false });
-
-    if (!error && data) setEnquiries(data);
-    setLoading(false);
+    // Mock simulation
+    setTimeout(() => {
+      const mockData: Enquiry[] = [
+        {
+          id: "1",
+          type: "event",
+          name: "Amit Kumar",
+          email: "amit@example.com",
+          phone: "+91 9876543210",
+          event_type: "Wedding",
+          guest_count: 500,
+          message: "Looking for premium decor.",
+          status: "new",
+          created_at: new Date().toISOString(),
+        },
+        {
+          id: "2",
+          type: "event",
+          name: "Shashank Manohar",
+          email: "shashank@example.com",
+          phone: "+91 8765432109",
+          event_type: "Corporate",
+          guest_count: 150,
+          message: "Conference room required.",
+          status: "contacted",
+          created_at: new Date(Date.now() - 86400000).toISOString(),
+        },
+      ];
+      setEnquiries(mockData);
+      setLoading(false);
+    }, 800);
   };
 
   const updateStatus = async (id: string, status: string) => {
-    await supabase.from("enquiries").update({ status }).eq("id", id);
+    // Mock update
     setEnquiries((prev) => prev.map((e) => (e.id === id ? { ...e, status } : e)));
   };
 
   const deleteEnquiry = async (id: string) => {
     if (!confirm("Are you sure you want to delete this enquiry?")) return;
-    await supabase.from("enquiries").delete().eq("id", id);
+    // Mock delete
     setEnquiries((prev) => prev.filter((e) => e.id !== id));
   };
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    localStorage.removeItem("admin_auth");
     navigate("/admin");
   };
 

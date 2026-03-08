@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "@/lib/supabase";
 import { Diamond, LogIn, Mail, Lock } from "lucide-react";
 
 const AdminLogin = () => {
@@ -15,40 +14,16 @@ const AdminLogin = () => {
     setLoading(true);
     setError("");
 
-    const { error: authError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (authError) {
-      setError("Invalid credentials. Please try again.");
+    // Mock Login Logic
+    setTimeout(() => {
+      if (email === "admin@diamondresort.com" && password === "admin123") {
+        localStorage.setItem("admin_auth", "true");
+        navigate("/admin/dashboard");
+      } else {
+        setError("Invalid credentials. Use admin@diamondresort.com / admin123");
+      }
       setLoading(false);
-      return;
-    }
-
-    // Check admin role
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-      setError("Authentication failed.");
-      setLoading(false);
-      return;
-    }
-
-    const { data: roleData } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", user.id)
-      .eq("role", "admin")
-      .maybeSingle();
-
-    if (!roleData) {
-      setError("You do not have admin access.");
-      await supabase.auth.signOut();
-      setLoading(false);
-      return;
-    }
-
-    navigate("/admin/dashboard");
+    }, 1000);
   };
 
   return (

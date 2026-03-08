@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import { supabase } from "@/lib/supabase";
 import { Utensils, Star, ArrowRight, Users, Clock, Sparkles, ChefHat, CalendarPlus, PartyPopper, Briefcase, Heart, Gift, GlassWater, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -68,25 +67,23 @@ const Dining = () => {
       return;
     }
     setSubmitting(true);
-    try {
-      const { error } = await supabase.from("enquiries").insert({
+    // Mock simulation
+    setTimeout(() => {
+      console.log("Mock saving catering enquiry:", {
         type: "event",
         name: formData.name,
-        email: formData.name + "@enquiry.local", // placeholder if no email field
+        email: formData.name + "@enquiry.local",
         phone: formData.phone,
         event_type: formData.eventType || null,
         guest_count: guestCount,
         event_date: formData.eventDate || null,
         message: formData.message || null,
       });
-      if (error) throw error;
       toast.success("Enquiry submitted! Our team will contact you shortly.");
       setFormData({ name: "", phone: "", eventDate: "", eventType: "", message: "" });
       setGuestCount(100);
-    } catch {
-      toast.error("Something went wrong. Please try again.");
-    }
-    setSubmitting(false);
+      setSubmitting(false);
+    }, 1000);
   };
 
   return (

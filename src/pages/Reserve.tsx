@@ -1,6 +1,5 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { supabase } from "@/lib/supabase";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -97,24 +96,20 @@ const Reserve = () => {
   const goNext = async () => {
     if (!canNext()) return;
     if (step === 4) {
-      // Save to database
-      try {
-        await supabase.from("enquiries").insert({
-          type: "event",
-          name,
-          email,
-          phone,
-          event_type: eventType,
-          guest_count: guests,
-          event_date: date ? date.toISOString().split("T")[0] : null,
-          venue,
-          rooms,
-          services,
-          special_requests: specialReq || null,
-        });
-      } catch (err) {
-        console.error("Failed to save enquiry:", err);
-      }
+      // Mock database save
+      console.log("Mock saving enquiry:", {
+        type: "event",
+        name,
+        email,
+        phone,
+        event_type: eventType,
+        guest_count: guests,
+        event_date: date ? date.toISOString().split("T")[0] : null,
+        venue,
+        rooms,
+        services,
+        special_requests: specialReq || null,
+      });
       setSubmitted(true);
       return;
     }
