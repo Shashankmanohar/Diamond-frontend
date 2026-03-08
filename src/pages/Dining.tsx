@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -56,6 +57,9 @@ const processSteps = [
 ];
 
 const Dining = () => {
+  useEffect(() => {
+    document.title = "Luxury Event Catering | Diamond Resort Patna";
+  }, []);
   const [guestCount, setGuestCount] = useState(100);
   const [formData, setFormData] = useState({ name: "", phone: "", eventDate: "", eventType: "", message: "" });
   const [submitting, setSubmitting] = useState(false);

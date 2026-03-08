@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Star, ArrowRight, Crown, Wine, Clock } from "lucide-react";
 
 const Suites = () => {
+  useEffect(() => {
+    document.title = "Suites & Luxury Residences | Diamond Resort Bihar";
+  }, []);
+
   return (
     <div className="bg-cream text-burgundy">
       <Navbar />

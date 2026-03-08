@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -70,6 +70,9 @@ const SectionHeader = ({ title, subtitle }: { title: string; subtitle: string })
 
 /* ─── Component ─── */
 const Reserve = () => {
+  useEffect(() => {
+    document.title = "Book Your Stay & Events | Diamond Resort Bihar";
+  }, []);
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
   const [submitted, setSubmitted] = useState(false);

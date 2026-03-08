@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -5,6 +6,10 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { Diamond, ArrowRight, ArrowUpRight, Star, ShieldCheck, Trophy, Sparkles, MapPin, Sunset, Flower2, Dumbbell, BookOpen, Clapperboard, ChefHat, Key, Crown, Building2, Leaf, Palette, Wine, Award, Medal } from "lucide-react";
 
 const Index = () => {
+  useEffect(() => {
+    document.title = "Diamond Resort | Bihar's Finest Ultra-Luxury Sanctuary";
+  }, []);
+
   return (
     <div className="bg-cream text-burgundy pb-24 lg:pb-0">
       <Navbar />
