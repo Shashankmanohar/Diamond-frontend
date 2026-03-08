@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Calendar as CalendarPicker } from "@/components/ui/calendar";
 import { format } from "date-fns";
+import { API_ENDPOINTS } from "@/config";
 
 /* ─── Event Types ─── */
 const EVENT_TYPES = [
@@ -68,6 +69,21 @@ const SectionHeader = ({ title, subtitle }: { title: string; subtitle: string })
   </motion.div>
 );
 
+/* ─── Floating Input ─── */
+const FloatingInput = ({ label, value, onChange, type = "text", icon }: { label: string; value: string; onChange: (v: string) => void; type?: string; icon: React.ReactNode }) => (
+  <motion.div variants={fadeUp} className="relative group">
+    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-ring/60 group-focus-within:text-ring transition-colors duration-300 z-10">
+      {icon}
+    </div>
+    <input
+      type={type} value={value} onChange={(e) => onChange(e.target.value)}
+      placeholder={label}
+      className="w-full bg-card/70 backdrop-blur-xl border border-border/20 rounded-2xl pl-12 pr-5 py-4 font-body text-foreground text-base placeholder:text-foreground/30 focus:outline-none focus:border-ring focus:ring-2 focus:ring-ring/20 focus:bg-card/90 transition-all duration-300 ease-luxury"
+      style={{ minHeight: "48px" }}
+    />
+  </motion.div>
+);
+
 /* ─── Component ─── */
 const Reserve = () => {
   useEffect(() => {
@@ -100,7 +116,7 @@ const Reserve = () => {
     if (!canNext()) return;
     if (step === 4) {
       try {
-        const response = await fetch("http://127.0.0.1:5000/api/bookings", {
+        const response = await fetch(API_ENDPOINTS.BOOKINGS, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -134,21 +150,6 @@ const Reserve = () => {
 
   const toggleService = (id: string) =>
     setServices((s) => s.includes(id) ? s.filter((x) => x !== id) : [...s, id]);
-
-  /* ─── Floating Input ─── */
-  const FloatingInput = ({ label, value, onChange, type = "text", icon }: { label: string; value: string; onChange: (v: string) => void; type?: string; icon: React.ReactNode }) => (
-    <motion.div variants={fadeUp} className="relative group">
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 text-ring/60 group-focus-within:text-ring transition-colors duration-300 z-10">
-        {icon}
-      </div>
-      <input
-        type={type} value={value} onChange={(e) => onChange(e.target.value)}
-        placeholder={label}
-        className="w-full bg-card/70 backdrop-blur-xl border border-border/20 rounded-2xl pl-12 pr-5 py-4 font-body text-foreground text-base placeholder:text-foreground/30 focus:outline-none focus:border-ring focus:ring-2 focus:ring-ring/20 focus:bg-card/90 transition-all duration-300 ease-luxury"
-        style={{ minHeight: "48px" }}
-      />
-    </motion.div>
-  );
 
   /* ─── Step Content ─── */
   const renderStep = () => {

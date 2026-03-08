@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_ENDPOINTS } from "@/config";
 import {
   Diamond, LogOut, Search, Filter, Trash2, Download,
   Calendar, Users, Mail, Phone, Clock, CheckCircle2,
@@ -48,7 +49,7 @@ const AdminDashboard = () => {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/admin/check-auth", {
+      const response = await fetch(API_ENDPOINTS.ADMIN_CHECK_AUTH, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!response.ok) {
@@ -65,7 +66,7 @@ const AdminDashboard = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem("admin_token");
-      const response = await fetch("http://127.0.0.1:5000/api/bookings", {
+      const response = await fetch(API_ENDPOINTS.BOOKINGS, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await response.json();
@@ -80,7 +81,7 @@ const AdminDashboard = () => {
   const updateStatus = async (id: string, status: string) => {
     try {
       const token = localStorage.getItem("admin_token");
-      const response = await fetch(`http://127.0.0.1:5000/api/bookings/${id}/status`, {
+      const response = await fetch(`${API_ENDPOINTS.BOOKINGS}/${id}/status`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -100,7 +101,7 @@ const AdminDashboard = () => {
     if (!confirm("Are you sure you want to delete this enquiry?")) return;
     try {
       const token = localStorage.getItem("admin_token");
-      const response = await fetch(`http://127.0.0.1:5000/api/bookings/${id}`, {
+      const response = await fetch(`${API_ENDPOINTS.BOOKINGS}/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { API_ENDPOINTS } from "@/config";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -72,7 +73,7 @@ const Dining = () => {
     }
     setSubmitting(true);
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/bookings", {
+      const response = await fetch(API_ENDPOINTS.BOOKINGS, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

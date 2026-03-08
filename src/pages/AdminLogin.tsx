@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Diamond, LogIn, Mail, Lock } from "lucide-react";
+import { API_ENDPOINTS } from "@/config";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ const AdminLogin = () => {
     setError("");
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/admin/login", {
+      const response = await fetch(API_ENDPOINTS.ADMIN_LOGIN, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
