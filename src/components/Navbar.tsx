@@ -47,9 +47,9 @@ const Navbar = () => {
       >
         <div className="flex-1 flex items-center">
           <Link to="/" className="flex items-center gap-4 group">
-            <Diamond className="w-7 h-7 text-ring group-hover:rotate-180 group-hover:scale-110 transition-transform duration-700 ease-luxury" />
+            <img src="/logo.png" alt="Diamond Resort" className="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-700 ease-luxury" />
             <span className="font-label font-medium text-ring text-xs tracking-[0.25em] group-hover:tracking-[0.3em] transition-all duration-500 ease-luxury">
-              THE DIAMOND RESORT
+              DIAMOND RESORT
             </span>
           </Link>
         </div>

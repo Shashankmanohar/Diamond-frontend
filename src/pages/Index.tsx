@@ -392,7 +392,7 @@ const Index = () => {
         </div>
 
         <ScrollReveal className="relative z-10 px-6 flex flex-col items-center">
-          <Diamond className="w-12 h-12 text-gold mb-6 animate-float-premium" />
+          <img src="/logo.png" alt="Diamond Resort" className="w-48 h-48 object-contain mb-6 animate-float-premium" />
           <h2 className="font-display font-light text-5xl lg:text-7xl text-cream leading-tight mb-8 tracking-tight">Secure Your Place<br />Among the Stars</h2>
           <Link to="/reserve" className="bg-cream text-burgundy font-label font-semibold text-sm tracking-[0.2em] px-10 py-5 rounded-full transition-all duration-500 ease-luxury shadow-[0_0_30px_rgba(201,168,76,0.1)] hover:shadow-[0_10px_40px_rgba(201,168,76,0.35)] flex items-center gap-3 btn-shimmer hover:-translate-y-[4px] hover:scale-[1.02] active:scale-95 group border border-transparent hover:border-gold/50">
             <span className="relative z-10">BEGIN RESERVATION</span>

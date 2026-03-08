@@ -41,9 +41,9 @@ const AdminLogin = () => {
     <div className="min-h-screen bg-primary flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-10">
-          <Diamond className="w-12 h-12 text-ring mx-auto mb-4" />
+          <img src="/logo.png" alt="Diamond Resort" className="w-40 h-40 object-contain mx-auto mb-4" />
           <h1 className="font-display text-3xl text-primary-foreground tracking-tight mb-2">Admin Portal</h1>
-          <p className="font-body text-primary-foreground/60">The Diamond Resort Management</p>
+          <p className="font-body text-primary-foreground/60">Diamond Resort Management</p>
         </div>
 
         <form onSubmit={handleLogin} className="bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10 rounded-3xl p-8 space-y-6">

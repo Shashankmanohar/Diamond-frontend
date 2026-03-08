@@ -15,9 +15,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 max-w-7xl mx-auto mb-16">
           {/* Brand */}
           <div className="flex flex-col items-center lg:items-start lg:col-span-1">
-            <Diamond className="w-10 h-10 text-accent mb-4 hover:rotate-180 transition-transform duration-700 ease-luxury" />
-            <span className="font-label font-medium text-accent text-xs tracking-[0.25em] mb-4 block">
-              THE DIAMOND RESORT
+            <img src="/logo.png" alt="Diamond Resort" className="w-24 h-24 object-contain mb-4 hover:scale-110 transition-transform duration-700 ease-luxury" />
+            <span className="font-label font-medium text-accent text-xs tracking-[0.25em] mb-4 block uppercase">
+              DIAMOND RESORT
             </span>
             <p className="font-body text-primary-foreground/60 text-sm max-w-[200px]">
               Bihar's finest ultra-luxury sanctuary.
