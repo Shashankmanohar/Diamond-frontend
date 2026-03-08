@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 39 56% 91%;
+    --foreground: 339 53% 15%;
+    --card: 39 56% 91%;
+    --card-foreground: 339 53% 15%;
+    --popover: 39 56% 91%;
+    --popover-foreground: 339 53% 15%;
+    --primary: 339 53% 15%;
+    --primary-foreground: 39 56% 91%;
+    --secondary: 42 52% 54%;
+    --secondary-foreground: 339 53% 15%;
+    --muted: 39 30% 85%;
+    --muted-foreground: 339 53% 15%;
+    --accent: 42 52% 54%;
+    --accent-foreground: 339 53% 15%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 339 53% 15%;
+    --input: 339 20% 80%;
+    --ring: 42 52% 54%;
+    --radius: 0.5rem;
+
+    --color-burgundy: 339 53% 15%;
+    --color-cream: 39 56% 91%;
+    --color-gold: 42 52% 54%;
+    --color-gold-light: 42 61% 69%;
+    --color-void: 340 30% 4%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+/* Custom luxury easing */
+:root {
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduced motion: disable all custom animations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-up, .reveal-mask, .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
+}
+
+::selection {
+  background: #C9A84C;
+  color: #3D0C1E;
+}
+
+body {
+  font-family: 'EB Garamond', serif;
+  background-color: #F5ECD7;
+  color: #3D0C1E;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Noise overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Scrollbar */
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #F5ECD7; }
+  ::-webkit-scrollbar-thumb { background: #3D0C1E; }
+}
+
+/* ───── Animations ───── */
+@keyframes goldShimmer {
+  0%, 20% { background-position: -100% center; }
+  40%, 100% { background-position: 200% center; }
+}
+
+@keyframes slowZoom {
+  0% { transform: scale(1.1) translateZ(0); }
+  100% { transform: scale(1) translateZ(0); }
+}
+
+@keyframes heavyRevealUp {
+  0% { transform: translateY(120%) rotate(4deg) scale(0.95); opacity: 0; filter: blur(12px); }
+  100% { transform: translateY(0) rotate(0) scale(1); opacity: 1; filter: blur(0); }
+}
+
+@keyframes floatPremium {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-0.75rem) rotate(1.5deg); }
+}
+
+@keyframes contentReveal {
+  0% { transform: translateY(40%); opacity: 0; filter: blur(10px); }
+  100% { transform: translateY(0); opacity: 1; filter: blur(0); }
+}
+
+@keyframes imageZoom {
+  0% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@keyframes lineGrow {
+  0% { transform: scaleX(0); transform-origin: left; }
+  100% { transform: scaleX(1); transform-origin: left; }
+}
+
+@keyframes preloaderFadeOut {
+  0% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes strokeDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+@layer utilities {
+  .animate-slow-zoom {
+    animation: slowZoom 25s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    will-change: transform;
+  }
+  .animate-float-premium {
+    animation: floatPremium 8s ease-in-out infinite;
+    will-change: transform;
+  }
+  .font-display {
+    font-family: 'Cinzel', serif;
+  }
+  .font-body {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .font-label {
+    font-family: 'EB Garamond', serif;
+  }
+  .font-script {
+    font-family: 'Great Vibes', cursive;
+  }
+  .ease-luxury {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  /* GPU-accelerated helper */
+  .gpu {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}
+
+/* ───── Shimmer text effect ───── */
+.shimmer-text {
+  background: linear-gradient(90deg, #C9A84C 0%, #E8C97A 50%, #C9A84C 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: goldShimmer 6s var(--ease-luxury) infinite;
+  will-change: background-position;
+}
+
+.shimmer-gold {
+  background: linear-gradient(90deg, #C9A84C 0%, #F5ECD7 50%, #C9A84C 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+  will-change: background-position;
+}
+
+/* ───── Button shimmer ───── */
+.btn-shimmer { position: relative; overflow: hidden; }
+.btn-shimmer::before {
+  content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.4), transparent);
+  transform: skewX(-20deg) translateZ(0); z-index: 1; transition: none; pointer-events: none;
+}
+.btn-shimmer:hover::before {
+  left: 200%; transition: left 0.8s var(--ease-luxury);
+}
+
+/* ───── Nav link animation ───── */
+.nav-link {
+  position: relative;
+  transition: letter-spacing 0.35s var(--ease-smooth), color 0.35s var(--ease-smooth);
+}
+.nav-link::after {
+  content: ''; position: absolute; bottom: -0.25rem; left: 0; width: 100%; height: 1px;
+  background-color: #C9A84C; transform: scaleX(0) translateZ(0); transform-origin: right;
+  transition: transform 0.35s var(--ease-smooth);
+  will-change: transform;
+}
+.nav-link:hover { letter-spacing: 0.25em; color: #C9A84C; opacity: 1; }
+.nav-link:hover::after, .nav-link.active::after { transform: scaleX(1) translateZ(0); transform-origin: left; }
+
+/* ───── Footer link animation ───── */
+.footer-link {
+  position: relative; display: inline-block;
+  transition: color 0.3s var(--ease-smooth);
+}
+.footer-link::after {
+  content: ''; position: absolute; bottom: -0.125rem; left: 0; width: 100%; height: 1px;
+  background-color: #C9A84C; transform: scaleX(0) translateZ(0); transform-origin: right;
+  transition: transform 0.35s var(--ease-smooth);
+  will-change: transform;
+}
+.footer-link:hover { color: #C9A84C; }
+.footer-link:hover::after { transform: scaleX(1) translateZ(0); transform-origin: left; }
+
+/* ───── Scroll reveal classes (GPU-accelerated) ───── */
+.reveal-up {
+  opacity: 0;
+  transform: translate3d(0, 3rem, 0) scale(0.99);
+  filter: blur(4px);
+  transition: transform 1s var(--ease-luxury), opacity 1s var(--ease-luxury), filter 1s var(--ease-luxury);
+  will-change: transform, opacity;
+}
+.reveal-up.revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+}
+
+.reveal-mask {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.2s var(--ease-luxury);
+  will-change: clip-path;
+}
+.reveal-mask.revealed { clip-path: inset(0 0 0 0); }
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale3d(0.95, 0.95, 1);
+  transition: transform 1s var(--ease-luxury), opacity 1s var(--ease-luxury);
+  will-change: transform, opacity;
+}
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: scale3d(1, 1, 1);
+}
+
+/* ───── iOS snap scroll ───── */
+.ios-snap-scroll { scroll-snap-type: x mandatory; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.ios-snap-item { scroll-snap-align: center; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ───── Preloader ───── */
+.preloader-path {
+  stroke-dasharray: 200; stroke-dashoffset: 200; stroke: #C9A84C; fill: none; stroke-width: 1.5;
+}
+.start-draw .preloader-path {
+  animation: strokeDraw 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+.preloader-exit {
+  transform: scale(1.1); opacity: 0; filter: blur(10px);
+  transition: all 1s var(--ease-luxury); pointer-events: none;
+}
+
+/* ───── Global GPU-accelerated hover transitions ───── */
+img {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Ensure all transition-based hovers use GPU compositing */
+.group:hover img,
+a:hover img {
+  backface-visibility: hidden;
+}
+
+@layer base {
+  * {
+    @apply border-border/10;
+  }
+}
