@@ -14,16 +14,27 @@ const AdminLogin = () => {
     setLoading(true);
     setError("");
 
-    // Mock Login Logic
-    setTimeout(() => {
-      if (email === "admin@diamondresort.com" && password === "admin123") {
-        localStorage.setItem("admin_auth", "true");
-        navigate("/admin/dashboard");
-      } else {
-        setError("Invalid credentials. Use admin@diamondresort.com / admin123");
+    try {
+      const response = await fetch("http://127.0.0.1:5000/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Login failed");
       }
+
+      localStorage.setItem("admin_token", data.token);
+      localStorage.setItem("admin_auth", "true");
+      navigate("/admin/dashboard");
+    } catch (err: any) {
+      setError(err.message || "Invalid credentials. Use diamondresort@gmail.com / Diamondresortadmin@2026");
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (

@@ -7,14 +7,14 @@ import {
 } from "lucide-react";
 
 interface Enquiry {
-  id: string;
+  _id: string;
   type: string;
   name: string;
   email: string;
   phone: string;
   event_type: string | null;
   guest_count: number | null;
-  message: string | null;
+  special_requests: string | null;
   status: string;
   created_at: string;
 }
@@ -41,60 +41,80 @@ const AdminDashboard = () => {
   }, []);
 
   const checkAuth = async () => {
-    const isAdmin = localStorage.getItem("admin_auth") === "true";
-    if (!isAdmin) {
+    const token = localStorage.getItem("admin_token");
+    if (!token) {
+      navigate("/admin");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://127.0.0.1:5000/api/admin/check-auth", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!response.ok) {
+        localStorage.removeItem("admin_auth");
+        localStorage.removeItem("admin_token");
+        navigate("/admin");
+      }
+    } catch (err) {
       navigate("/admin");
     }
   };
 
   const fetchEnquiries = async () => {
     setLoading(true);
-    // Mock simulation
-    setTimeout(() => {
-      const mockData: Enquiry[] = [
-        {
-          id: "1",
-          type: "event",
-          name: "Amit Kumar",
-          email: "amit@example.com",
-          phone: "+91 9876543210",
-          event_type: "Wedding",
-          guest_count: 500,
-          message: "Looking for premium decor.",
-          status: "new",
-          created_at: new Date().toISOString(),
-        },
-        {
-          id: "2",
-          type: "event",
-          name: "Shashank Manohar",
-          email: "shashank@example.com",
-          phone: "+91 8765432109",
-          event_type: "Corporate",
-          guest_count: 150,
-          message: "Conference room required.",
-          status: "contacted",
-          created_at: new Date(Date.now() - 86400000).toISOString(),
-        },
-      ];
-      setEnquiries(mockData);
+    try {
+      const token = localStorage.getItem("admin_token");
+      const response = await fetch("http://127.0.0.1:5000/api/bookings", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const data = await response.json();
+      if (response.ok) setEnquiries(data);
+    } catch (err) {
+      console.error("Fetch Error:", err);
+    } finally {
       setLoading(false);
-    }, 800);
+    }
   };
 
   const updateStatus = async (id: string, status: string) => {
-    // Mock update
-    setEnquiries((prev) => prev.map((e) => (e.id === id ? { ...e, status } : e)));
+    try {
+      const token = localStorage.getItem("admin_token");
+      const response = await fetch(`http://127.0.0.1:5000/api/bookings/${id}/status`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ status }),
+      });
+      if (response.ok) {
+        setEnquiries((prev) => prev.map((e) => (e._id === id ? { ...e, status } : e)));
+      }
+    } catch (err) {
+      console.error("Update Error:", err);
+    }
   };
 
   const deleteEnquiry = async (id: string) => {
     if (!confirm("Are you sure you want to delete this enquiry?")) return;
-    // Mock delete
-    setEnquiries((prev) => prev.filter((e) => e.id !== id));
+    try {
+      const token = localStorage.getItem("admin_token");
+      const response = await fetch(`http://127.0.0.1:5000/api/bookings/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response.ok) {
+        setEnquiries((prev) => prev.filter((e) => e._id !== id));
+      }
+    } catch (err) {
+      console.error("Delete Error:", err);
+    }
   };
 
   const handleLogout = async () => {
     localStorage.removeItem("admin_auth");
+    localStorage.removeItem("admin_token");
     navigate("/admin");
   };
 
@@ -120,10 +140,10 @@ const AdminDashboard = () => {
   }, [enquiries, searchTerm, filterType, filterStatus, sortOrder]);
 
   const exportCSV = () => {
-    const headers = ["Name", "Email", "Phone", "Type", "Event", "Guests", "Status", "Date", "Message"];
+    const headers = ["Name", "Email", "Phone", "Type", "Event", "Guests", "Status", "Date", "Notes"];
     const rows = filtered.map((e) => [
       e.name, e.email, e.phone, e.type, e.event_type || "", e.guest_count || "",
-      e.status, new Date(e.created_at).toLocaleDateString(), e.message || "",
+      e.status, new Date(e.created_at).toLocaleDateString(), e.special_requests || "",
     ]);
     const csv = [headers, ...rows].map((r) => r.map((c) => `"${c}"`).join(",")).join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
@@ -232,7 +252,8 @@ const AdminDashboard = () => {
               </thead>
               <tbody>
                 {filtered.map((e) => (
-                  <tr key={e.id} className="border-b border-primary-foreground/5 hover:bg-primary-foreground/5 transition-colors duration-200">
+                  <tr key={e._id} className="border-b border-primary-foreground/5 hover:bg-primary-foreground/5 transition-colors duration-200">
+
                     <td className="px-4 py-4">
                       <div className="font-body text-sm text-primary-foreground">{e.name}</div>
                       <div className="font-body text-xs text-primary-foreground/40 lg:hidden">{e.email}</div>
@@ -254,7 +275,7 @@ const AdminDashboard = () => {
                     <td className="px-4 py-4">
                       <select
                         value={e.status}
-                        onChange={(ev) => updateStatus(e.id, ev.target.value)}
+                        onChange={(ev) => updateStatus(e._id, ev.target.value)}
                         className={`text-xs font-label tracking-wider uppercase border rounded-full px-3 py-1.5 bg-transparent cursor-pointer focus:outline-none ${STATUS_COLORS[e.status] || ""}`}
                       >
                         <option value="new">New</option>
@@ -264,7 +285,7 @@ const AdminDashboard = () => {
                       </select>
                     </td>
                     <td className="px-4 py-4 text-right">
-                      <button onClick={() => deleteEnquiry(e.id)} className="text-primary-foreground/30 hover:text-destructive transition-colors duration-200" title="Delete">
+                      <button onClick={() => deleteEnquiry(e._id)} className="text-primary-foreground/30 hover:text-destructive transition-colors duration-200" title="Delete">
                         <Trash2 className="w-4 h-4" />
                       </button>
                     </td>

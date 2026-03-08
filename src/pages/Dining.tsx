@@ -67,23 +67,32 @@ const Dining = () => {
       return;
     }
     setSubmitting(true);
-    // Mock simulation
-    setTimeout(() => {
-      console.log("Mock saving catering enquiry:", {
-        type: "event",
-        name: formData.name,
-        email: formData.name + "@enquiry.local",
-        phone: formData.phone,
-        event_type: formData.eventType || null,
-        guest_count: guestCount,
-        event_date: formData.eventDate || null,
-        message: formData.message || null,
+    try {
+      const response = await fetch("http://127.0.0.1:5000/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "event",
+          name: formData.name,
+          email: formData.name + "@enquiry.local",
+          phone: formData.phone,
+          event_type: formData.eventType || null,
+          guest_count: guestCount,
+          special_requests: formData.message || null,
+        }),
       });
+
+      if (!response.ok) throw new Error("Failed to submit enquiry");
+
       toast.success("Enquiry submitted! Our team will contact you shortly.");
       setFormData({ name: "", phone: "", eventDate: "", eventType: "", message: "" });
       setGuestCount(100);
+    } catch (err) {
+      console.error("Enquiry Error:", err);
+      toast.error("Something went wrong. Please try again later.");
+    } finally {
       setSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (

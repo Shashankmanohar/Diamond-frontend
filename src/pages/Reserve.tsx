@@ -96,21 +96,32 @@ const Reserve = () => {
   const goNext = async () => {
     if (!canNext()) return;
     if (step === 4) {
-      // Mock database save
-      console.log("Mock saving enquiry:", {
-        type: "event",
-        name,
-        email,
-        phone,
-        event_type: eventType,
-        guest_count: guests,
-        event_date: date ? date.toISOString().split("T")[0] : null,
-        venue,
-        rooms,
-        services,
-        special_requests: specialReq || null,
-      });
-      setSubmitted(true);
+      try {
+        const response = await fetch("http://127.0.0.1:5000/api/bookings", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "event",
+            name,
+            email,
+            phone,
+            event_type: eventType,
+            guest_count: guests,
+            event_date: date ? date.toISOString() : null,
+            venue,
+            rooms,
+            services,
+            special_requests: specialReq || null,
+          }),
+        });
+
+        if (!response.ok) throw new Error("Failed to submit reservation");
+        
+        setSubmitted(true);
+      } catch (err) {
+        console.error("Reservation Error:", err);
+        alert("Something went wrong. Please try again later.");
+      }
       return;
     }
     setDirection(1);
