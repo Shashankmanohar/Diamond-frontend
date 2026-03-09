@@ -43,7 +43,7 @@ const Footer = () => {
               </h5>
               <ul className="flex flex-col items-center lg:items-start gap-4 text-sm font-body text-primary-foreground/60">
                 <li><a href="#" className="footer-link">Instagram</a></li>
-                <li><a href="#" className="footer-link">Contact</a></li>
+                <li><a href="https://wa.me/918092719700" target="_blank" rel="noopener noreferrer" className="footer-link">Contact</a></li>
                 <li><Link to="/sitemap" className="footer-link">Sitemap</Link></li>
               </ul>
             </div>
@@ -55,7 +55,8 @@ const Footer = () => {
             <p className="font-body text-sm text-primary-foreground/80 mb-2">
               Diamond Resort<br />
               Patna–Bakhtiyarpur Road,<br />
-              Bihar 800001, India
+              Bihar 800001, India<br />
+              <span className="text-accent font-semibold">T: +91 80927 19700</span>
             </p>
             <a
               href={GOOGLE_MAPS_URL}

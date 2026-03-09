@@ -1,6 +1,6 @@
 import { MessageCircle } from "lucide-react";
 
-const WHATSAPP_NUMBER = "918863081255"; // Replace with actual number
+const WHATSAPP_NUMBER = "918092719700"; // Replace with actual number
 const DEFAULT_MESSAGE = encodeURIComponent(
   "Hello! I'd like to enquire about The Diamond Resort."
 );
