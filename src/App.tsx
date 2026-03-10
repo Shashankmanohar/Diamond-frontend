@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import WhatsAppButton from "./components/WhatsAppButton";
+import MobileLuxuryNav from "./components/MobileLuxuryNav";
 import PagePreloader from "./components/PagePreloader";
 import RouteTransition from "./components/RouteTransition";
 
@@ -42,6 +43,7 @@ const App = () => (
           </RouteTransition>
         </Suspense>
         <WhatsAppButton />
+        <MobileLuxuryNav />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
