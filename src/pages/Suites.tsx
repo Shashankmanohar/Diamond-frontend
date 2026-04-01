@@ -1,27 +1,30 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import { Star, ArrowRight, Crown, Wine, Clock } from "lucide-react";
+import { Star, ArrowRight, Crown, Wine, Clock, ShieldCheck, Sparkles, Utensils, Zap, MapPin, Users } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const Suites = () => {
-  useEffect(() => {
-    document.title = "Suites & Luxury Residences | Diamond Resort Bihar";
-  }, []);
-
   return (
     <div className="bg-cream text-burgundy">
+      <SEO
+        title="Luxury Suites & Villas | Diamond Resort Bihar"
+        description="Experience unparalleled luxury in our handcrafted suites and private villas. Each residence at Diamond Resort & Spa is a masterpiece of design and comfort."
+        keywords="luxury suites, private villas, Bihar luxury accommodation, Diamond Resort suites, honeymoon suites Bihar"
+      />
       <Navbar />
 
       {/* Hero */}
       <header className="relative h-screen w-full overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&q=55&w=1280&fm=webp"
+            src="/Resortphoto/hero_suites.webp"
             alt="Luxury Suite Interior"
             className="w-full h-full object-cover scale-110 opacity-0"
             style={{ animation: "imageZoom 15s 1s var(--ease-luxury) infinite alternate, contentReveal 2s 1s forwards" }}
-            fetchPriority="high" decoding="async"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-burgundy/70 via-burgundy/30 to-burgundy" />
         </div>
@@ -72,7 +75,7 @@ const Suites = () => {
           <ScrollReveal type="mask" className="lg:col-span-7 relative group">
             <div className="aspect-[16/10] overflow-hidden rounded-sm">
               <img
-                src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=55&w=800&fm=webp"
+                src="/Resortphoto/suite_diamond.webp"
                 className="w-full h-full object-cover transition-transform duration-[3s] group-hover:scale-105"
                 alt="Diamond Suite" loading="lazy" decoding="async"
               />
@@ -84,26 +87,34 @@ const Suites = () => {
               <span className="text-gold font-medium text-xs tracking-[0.4em] uppercase block">The Crown Jewel</span>
               <h3 className="font-display text-4xl lg:text-6xl text-burgundy tracking-tight">Diamond Grand Suite</h3>
               <p className="text-burgundy/70 text-lg leading-relaxed">
-                A masterwork of interior architecture, featuring a private saltwater infinity pool and a curated collection of local Bihar heritage artifacts.
+                A masterwork of interior architecture, featuring a private saltwater infinity pool, a curated collection of local Bihar heritage artifacts, and a sprawling terrace that offers an unobstructed view of the mystic Gangetic sunrise.
               </p>
 
-              <div className="grid grid-cols-2 gap-8 py-8 border-y border-burgundy/10">
+              <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-10 border-y border-burgundy/10">
                 <div>
-                  <span className="block text-xs tracking-[0.3em] uppercase text-gold mb-2">Space</span>
+                  <span className="block text-xs tracking-[0.3em] uppercase text-gold mb-2">Living Space</span>
                   <span className="text-lg">3,200 SQ FT</span>
                 </div>
                 <div>
-                  <span className="block text-xs tracking-[0.3em] uppercase text-gold mb-2">Service</span>
+                  <span className="block text-xs tracking-[0.3em] uppercase text-gold mb-2">Bespoke Service</span>
                   <span className="text-lg">24h Butler</span>
+                </div>
+                <div>
+                  <span className="block text-xs tracking-[0.3em] uppercase text-gold mb-2">Capacity</span>
+                  <span className="text-lg">4 Guests</span>
+                </div>
+                <div>
+                  <span className="block text-xs tracking-[0.3em] uppercase text-gold mb-2">Primary View</span>
+                  <span className="text-lg">River Ganges</span>
                 </div>
               </div>
 
-              <a href="#" className="inline-flex items-center gap-6 group/link">
+              <Link to="/reserve" className="inline-flex items-center gap-6 group/link">
                 <span className="font-medium text-xs tracking-[0.3em] uppercase text-burgundy">Explore The Suite</span>
                 <div className="w-12 h-12 rounded-full border border-burgundy/20 flex items-center justify-center group-hover/link:bg-burgundy group-hover/link:text-cream transition-all duration-500">
                   <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
                 </div>
-              </a>
+              </Link>
             </div>
           </ScrollReveal>
         </div>
@@ -123,12 +134,12 @@ const Suites = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {[
-              { name: "Heritage Loft", tags: "Garden View • Private Balcony", img: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=50&w=480&fm=webp" },
-              { name: "Royal Sanctuary", tags: "River View • Spa Ensuite", img: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=50&w=480&fm=webp" },
-              { name: "The Villa Residence", tags: "Private Pool • Master Kitchen", img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=50&w=480&fm=webp" },
+              { name: "Heritage Loft", tags: "Garden Haven • Artisanal Furnishings", img: "/Resortphoto/suite_deluxe.webp" },
+              { name: "Royal Sanctuary", tags: "River Vista • Vedic Spa Ensuite", img: "/Resortphoto/suite_maharaja.webp" },
+              { name: "The Villa Residence", tags: "Private Courtyard • Chef's Kitchen", img: "/Resortphoto/suite_executive.webp" },
             ].map((suite, i) => (
               <ScrollReveal type="scale" delay={i * 200} key={suite.name} className="group">
-                <div className="relative overflow-hidden mb-8 aspect-[4/5]">
+                <div className="relative overflow-hidden mb-8 aspect-[4/5] rounded-[1.5rem] shadow-xl shadow-burgundy/5">
                   <img src={suite.img} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" alt={suite.name} loading="lazy" decoding="async" />
                 </div>
                 <div className="flex justify-between items-start">
@@ -149,7 +160,7 @@ const Suites = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             <ScrollReveal type="mask">
-              <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&q=50&w=640&fm=webp" className="rounded-sm w-full h-[600px] object-cover" alt="Immaculate Service" loading="lazy" decoding="async" />
+              <img src="/Resortphoto/dining_main.webp" className="rounded-sm w-full h-[600px] object-cover shadow-2xl" alt="Immaculate Service" loading="lazy" decoding="async" />
             </ScrollReveal>
             <div className="space-y-12">
               <ScrollReveal>
@@ -161,14 +172,22 @@ const Suites = () => {
               </ScrollReveal>
 
               <ScrollReveal>
-                <div className="grid grid-cols-2 gap-8">
-                  <div className="p-8 border border-cream/10 hover:bg-cream/5 transition-colors cursor-default">
-                    <Wine className="w-8 h-8 text-gold mb-4" strokeWidth={1.5} />
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="p-8 border border-cream/10 hover:bg-cream/5 transition-all duration-500 hover:-translate-y-1 cursor-default group">
+                    <Wine className="w-8 h-8 text-gold mb-4 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
                     <h5 className="text-xs tracking-[0.2em] uppercase font-medium">Sommelier Service</h5>
                   </div>
-                  <div className="p-8 border border-cream/10 hover:bg-cream/5 transition-colors cursor-default">
-                    <Clock className="w-8 h-8 text-gold mb-4" strokeWidth={1.5} />
+                  <div className="p-8 border border-cream/10 hover:bg-cream/5 transition-all duration-500 hover:-translate-y-1 cursor-default group">
+                    <Clock className="w-8 h-8 text-gold mb-4 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
                     <h5 className="text-xs tracking-[0.2em] uppercase font-medium">Unrestricted Dining</h5>
+                  </div>
+                  <div className="p-8 border border-cream/10 hover:bg-cream/5 transition-all duration-500 hover:-translate-y-1 cursor-default group">
+                    <Sparkles className="w-8 h-8 text-gold mb-4 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+                    <h5 className="text-xs tracking-[0.2em] uppercase font-medium">Valet & Car Care</h5>
+                  </div>
+                  <div className="p-8 border border-cream/10 hover:bg-cream/5 transition-all duration-500 hover:-translate-y-1 cursor-default group">
+                    <ShieldCheck className="w-8 h-8 text-gold mb-4 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+                    <h5 className="text-xs tracking-[0.2em] uppercase font-medium">VIP Concierge</h5>
                   </div>
                 </div>
               </ScrollReveal>
@@ -180,15 +199,15 @@ const Suites = () => {
       {/* CTA */}
       <section id="reserve" className="relative h-[80vh] flex items-center justify-center text-center overflow-hidden">
         <div className="absolute inset-0 z-0 bg-burgundy">
-          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=960&q=50&fm=webp" className="w-full h-full object-cover opacity-40" alt="Resort Aerial" loading="lazy" decoding="async" />
+          <img src="/Resortphoto/garden_view.webp" className="w-full h-full object-cover opacity-40 animate-slow-zoom" alt="Resort Aerial" loading="lazy" decoding="async" />
         </div>
 
         <ScrollReveal className="relative z-10 px-6 max-w-4xl">
           <span className="text-gold text-xs tracking-[0.6em] uppercase font-medium block mb-6">Your Sanctuary Awaits</span>
           <h2 className="font-display text-5xl lg:text-8xl text-cream tracking-tight mb-12">Return to yourself.</h2>
-          <button className="bg-cream text-burgundy px-12 py-5 font-medium text-xs tracking-[0.4em] uppercase hover:bg-gold transition-all duration-700 hover:scale-105">
+          <Link to="/reserve" className="bg-cream text-burgundy px-12 py-5 font-medium text-xs tracking-[0.4em] uppercase hover:bg-gold transition-all duration-700 hover:scale-105">
             Check Availability
-          </button>
+          </Link>
         </ScrollReveal>
       </section>
 

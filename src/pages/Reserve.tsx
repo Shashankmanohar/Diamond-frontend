@@ -14,31 +14,31 @@ import { API_ENDPOINTS } from "@/config";
 
 /* ─── Event Types ─── */
 const EVENT_TYPES = [
-  { id: "wedding", label: "Wedding", icon: Heart, img: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80" },
-  { id: "engagement", label: "Engagement", icon: Gem, img: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&q=80" },
-  { id: "reception", label: "Reception", icon: PartyPopper, img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80" },
-  { id: "birthday", label: "Birthday", icon: Cake, img: "https://images.unsplash.com/photo-1464349153735-7db50ed83c84?w=600&q=80" },
-  { id: "vacation", label: "Vacation", icon: Plane, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" },
-  { id: "corporate", label: "Corporate", icon: Briefcase, img: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=80" },
-  { id: "anniversary", label: "Anniversary", icon: Star, img: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&q=80" },
-  { id: "private", label: "Private", icon: Crown, img: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80" },
-  { id: "custom", label: "Custom", icon: Sparkles, img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80" },
+  { id: "wedding", label: "Wedding", icon: Heart, img: "/Resortphoto/suite_diamond.webp" },
+  { id: "engagement", label: "Engagement", icon: Gem, img: "/Resortphoto/garden_view.webp" },
+  { id: "reception", label: "Reception", icon: PartyPopper, img: "/Resortphoto/heritage_arch.webp" },
+  { id: "birthday", label: "Birthday", icon: Cake, img: "/Resortphoto/gallery_5.webp" },
+  { id: "vacation", label: "Vacation", icon: Plane, img: "/Resortphoto/hero_home.webp" },
+  { id: "corporate", label: "Corporate", icon: Briefcase, img: "/Resortphoto/arch_signature.webp" },
+  { id: "anniversary", label: "Anniversary", icon: Star, img: "/Resortphoto/gallery_6.webp" },
+  { id: "private", label: "Private", icon: Crown, img: "/Resortphoto/suite_executive.webp" },
+  { id: "custom", label: "Custom", icon: Sparkles, img: "/Resortphoto/gallery_7.webp" },
 ];
 
 const OPTIONAL_SERVICES = [
-  { id: "catering", label: "Catering", icon: UtensilsCrossed, img: "https://images.unsplash.com/photo-1555244162-803834f70033?w=400&q=80" },
-  { id: "photography", label: "Photography", icon: Camera, img: "https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=400&q=80" },
-  { id: "decor", label: "Luxury Decor", icon: Flower2, img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400&q=80" },
-  { id: "music", label: "Live Music", icon: Music, img: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=400&q=80" },
-  { id: "pickup", label: "Airport Pickup", icon: Car, img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0637?w=400&q=80" },
-  { id: "spa", label: "Spa Package", icon: Sparkles, img: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=80" },
+  { id: "catering", label: "Catering", icon: UtensilsCrossed, img: "/Resortphoto/dining_aurum.webp" },
+  { id: "photography", label: "Photography", icon: Camera, img: "/Resortphoto/heritage_arch.webp" },
+  { id: "decor", label: "Luxury Decor", icon: Flower2, img: "/Resortphoto/gallery_2.webp" },
+  { id: "music", label: "Live Music", icon: Music, img: "/Resortphoto/gallery_3.webp" },
+  { id: "pickup", label: "Airport Pickup", icon: Car, img: "/Resortphoto/arch_signature.webp" },
+  { id: "spa", label: "Spa Package", icon: Sparkles, img: "/Resortphoto/exp_spa.webp" },
 ];
 
 const VENUES = [
-  { id: "grand-ballroom", name: "Grand Ballroom", capacity: "Up to 500 guests", price: "From ₹8,00,000", img: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=85" },
-  { id: "garden-pavilion", name: "Garden Pavilion", capacity: "Up to 200 guests", price: "From ₹4,50,000", img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=85" },
-  { id: "rooftop-terrace", name: "Rooftop Terrace", capacity: "Up to 120 guests", price: "From ₹3,00,000", img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=85" },
-  { id: "private-suite", name: "Private Suite", capacity: "Up to 30 guests", price: "From ₹1,50,000", img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=85" },
+  { id: "grand-ballroom", name: "Grand Ballroom", capacity: "Up to 500 guests", price: "From ₹8,00,000", img: "/Resortphoto/hero_suites.webp" },
+  { id: "garden-pavilion", name: "Garden Pavilion", capacity: "Up to 200 guests", price: "From ₹4,50,000", img: "/Resortphoto/garden_view.webp" },
+  { id: "rooftop-terrace", name: "Rooftop Terrace", capacity: "Up to 120 guests", price: "From ₹3,00,000", img: "/Resortphoto/dining_main.webp" },
+  { id: "private-suite", name: "Private Suite", capacity: "Up to 30 guests", price: "From ₹1,50,000", img: "/Resortphoto/suite_diamond.webp" },
 ];
 
 const STEPS = ["Event", "Schedule", "Venue", "Details", "Review"];
@@ -85,10 +85,9 @@ const FloatingInput = ({ label, value, onChange, type = "text", icon }: { label:
 );
 
 /* ─── Component ─── */
+import SEO from "@/components/SEO";
+
 const Reserve = () => {
-  useEffect(() => {
-    document.title = "Book Your Stay & Events | Diamond Resort Bihar";
-  }, []);
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
   const [submitted, setSubmitted] = useState(false);
@@ -108,7 +107,10 @@ const Reserve = () => {
     if (step === 0) return !!eventType;
     if (step === 1) return !!date && guests > 0;
     if (step === 2) return !!venue;
-    if (step === 3) return name.trim().length > 1 && /\S+@\S+\.\S+/.test(email) && phone.trim().length >= 7;
+    if (step === 3) {
+      const isEmailValid = !email || /\S+@\S+\.\S+/.test(email);
+      return name.trim().length > 1 && isEmailValid && phone.trim().length >= 7;
+    }
     return true;
   }, [step, eventType, date, guests, venue, name, email, phone]);
 
@@ -335,7 +337,7 @@ const Reserve = () => {
             <SectionHeader title="Your Details" subtitle="Let us know how to reach you." />
             <motion.div variants={{ visible: stagger }} initial="hidden" animate="visible" className="space-y-4">
               <FloatingInput label="Full Name" value={name} onChange={setName} icon={<User className="w-4 h-4" />} />
-              <FloatingInput label="Email Address" value={email} onChange={setEmail} type="email" icon={<Mail className="w-4 h-4" />} />
+              <FloatingInput label="Email Address (Optional)" value={email} onChange={setEmail} type="email" icon={<Mail className="w-4 h-4" />} />
               <FloatingInput label="Phone Number" value={phone} onChange={setPhone} type="tel" icon={<Phone className="w-4 h-4" />} />
               <motion.div variants={fadeUp}>
                 <div className="relative group">
@@ -408,6 +410,11 @@ const Reserve = () => {
   if (submitted) {
     return (
       <div className="bg-background text-foreground min-h-screen pb-28 lg:pb-0">
+        <SEO 
+          title="Reservation Received | Diamond Resort & Spa"
+          description="Your reservation has been received. Our concierge team will contact you shortly to confirm your luxury stay."
+          keywords="reservation confirmed, Diamond Resort booking, luxury stay confirmation"
+        />
         <Navbar />
         <div className="min-h-screen flex items-center justify-center px-5">
           <motion.div
@@ -452,12 +459,17 @@ const Reserve = () => {
   /* ─── Main Layout ─── */
   return (
     <div className="bg-background text-foreground min-h-screen pb-32 lg:pb-0">
+      <SEO 
+        title="Book Your Luxury Stay | Diamond Resort & Spa"
+        description="Plan your escape to paradise. Reserve your suite or villa at Diamond Resort & Spa today. Simple and secure booking for your luxury stay."
+        keywords="book resort Bihar, hotel reservation Patna, Diamond Resort booking, luxury stay booking, event venue booking"
+      />
       <Navbar />
 
       {/* Hero – 45-55vh, improved overlay */}
       <header className="relative w-full overflow-hidden flex items-center justify-center" style={{ height: "clamp(300px, 50vh, 480px)" }}>
         <div className="absolute inset-0 bg-primary">
-          <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1920&q=85" alt="Reserve at The Diamond Resort" loading="eager"
+          <img src="/Resortphoto/hero_home.webp" alt="Reserve at The Diamond Resort" loading="eager"
             className="w-full h-full object-cover opacity-50 mix-blend-overlay animate-slow-zoom" />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/30 to-primary/90" style={{ opacity: 0.72 }} />
         </div>

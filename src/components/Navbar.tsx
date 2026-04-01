@@ -42,13 +42,13 @@ const Navbar = () => {
       {/* Desktop Navigation */}
       <nav
         className={`hidden lg:flex fixed top-0 left-0 w-full z-[1000] transition-all duration-500 ease-luxury items-center px-12 ${
-          scrolled ? "bg-primary/95 backdrop-blur-xl border-b border-ring/20 h-20 shadow-lg" : "h-24"
+          scrolled ? "bg-primary/95 backdrop-blur-xl border-b border-ring/20 h-24 shadow-lg" : "h-32"
         }`}
       >
         <div className="flex-1 flex items-center">
           <Link to="/" className="flex items-center gap-4 group">
-            <img src="/logo.png" alt="Diamond Resort" className="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-700 ease-luxury" />
-            <span className="font-label font-medium text-ring text-xs tracking-[0.25em] group-hover:tracking-[0.3em] transition-all duration-500 ease-luxury">
+            <img src="/DiamondResort.webp" alt="Diamond Resort" className="w-28 h-28 object-contain group-hover:scale-110 transition-transform duration-700 ease-luxury" />
+            <span className="font-label font-medium text-ring text-base tracking-[0.35em] group-hover:tracking-[0.4em] transition-all duration-500 ease-luxury">
               DIAMOND RESORT
             </span>
           </Link>

@@ -1,14 +1,10 @@
 import { MessageCircle } from "lucide-react";
-
-const WHATSAPP_NUMBER = "918092719700"; // Replace with actual number
-const DEFAULT_MESSAGE = encodeURIComponent(
-  "Hello! I'd like to enquire about The Diamond Resort."
-);
+import { WHATSAPP_LINK } from "@/config";
 
 const WhatsAppButton = () => {
   return (
     <a
-      href={`https://wa.me/${WHATSAPP_NUMBER}?text=${DEFAULT_MESSAGE}`}
+      href={WHATSAPP_LINK}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"

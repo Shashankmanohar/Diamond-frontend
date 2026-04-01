@@ -260,10 +260,14 @@ body::after {
 
 .reveal-mask {
   clip-path: inset(100% 0 0 0);
-  transition: clip-path 1.2s var(--ease-luxury);
-  will-change: clip-path;
+  transition: clip-path 1.4s var(--ease-luxury), opacity 1s var(--ease-luxury);
+  will-change: clip-path, opacity;
+  opacity: 0;
 }
-.reveal-mask.revealed { clip-path: inset(0 0 0 0); }
+.reveal-mask.revealed { 
+  clip-path: inset(0 0 0 0); 
+  opacity: 1;
+}
 
 .reveal-scale {
   opacity: 0;
@@ -298,6 +302,7 @@ body::after {
 img {
   transform: translateZ(0);
   backface-visibility: hidden;
+  background-color: rgba(0,0,0,0.05); /* Subtle placeholder */
 }
 
 /* Ensure all transition-based hovers use GPU compositing */

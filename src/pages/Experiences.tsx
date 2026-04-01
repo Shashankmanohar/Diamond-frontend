@@ -8,26 +8,26 @@ import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 
 const experienceImages = {
-  hero: "https://images.unsplash.com/photo-1540541338287-41700c6e5fd1?w=1280&q=55&fm=webp",
-  adventure: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=480&q=50&fm=webp",
-  nature: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=480&q=50&fm=webp",
-  spa: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=480&q=50&fm=webp",
-  cultural: "https://images.unsplash.com/photo-1604999333679-b86d54738315?w=480&q=50&fm=webp",
-  dining: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=480&q=50&fm=webp",
-  celebration: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=480&q=50&fm=webp",
-  candlelight: "https://images.unsplash.com/photo-1529543544282-ea702407d1df?w=640&q=55&fm=webp",
-  sunrise: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=640&q=55&fm=webp",
-  poolside: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=640&q=55&fm=webp",
-  bonfire: "https://images.unsplash.com/photo-1475483768296-6163e08872a1?w=640&q=55&fm=webp",
-  gallery1: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=320&q=50&fm=webp",
-  gallery2: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=320&q=50&fm=webp",
-  gallery3: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=320&q=50&fm=webp",
-  gallery4: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=320&q=50&fm=webp",
-  gallery5: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=320&q=50&fm=webp",
-  gallery6: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=320&q=50&fm=webp",
-  gallery7: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=320&q=50&fm=webp",
-  gallery8: "https://images.unsplash.com/photo-1542314831-c6a4d14d23e5?w=320&q=50&fm=webp",
-  cta: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=960&q=50&fm=webp",
+  hero: "/Resortphoto/hero_home.webp",
+  adventure: "/Resortphoto/gallery_3.webp",
+  nature: "/Resortphoto/garden_view.webp",
+  spa: "/Resortphoto/exp_spa.webp",
+  cultural: "/Resortphoto/exp_cultural.webp",
+  dining: "/Resortphoto/dining_main.webp",
+  celebration: "/Resortphoto/suite_diamond.webp",
+  candlelight: "/Resortphoto/exp_sunset.webp",
+  sunrise: "/Resortphoto/hero_suites.webp",
+  poolside: "/Resortphoto/gallery_1.webp",
+  bonfire: "/Resortphoto/gallery_2.webp",
+  gallery1: "/Resortphoto/gallery_1.webp",
+  gallery2: "/Resortphoto/gallery_2.webp",
+  gallery3: "/Resortphoto/gallery_3.webp",
+  gallery4: "/Resortphoto/gallery_4.webp",
+  gallery5: "/Resortphoto/gallery_5.webp",
+  gallery6: "/Resortphoto/gallery_6.webp",
+  gallery7: "/Resortphoto/gallery_7.webp",
+  gallery8: "/Resortphoto/hero_home.webp",
+  cta: "/Resortphoto/arch_signature.webp",
 };
 
 const categories = [
@@ -41,23 +41,23 @@ const categories = [
 
 const signatureExperiences = [
   {
-    name: "Private Candlelight Dinner",
-    desc: "An intimate evening set beneath a canopy of stars, with a personally curated multi-course menu prepared by our executive chef. Rose petals, fine crystal, and the gentle glow of candlelight create a truly unforgettable dining experience.",
+    name: "Ganga Sunset Ritual",
+    desc: "Experience the profound silence of the sacred river as the sky transforms into a canvas of gold and violet. A private boat journey followed by a candlelit dinner on the banks.",
     img: experienceImages.candlelight,
   },
   {
-    name: "Mountain Sunrise Trek",
-    desc: "Embark on a guided dawn trek through misty trails and rolling hills. Reach the summit in time to witness a breathtaking sunrise, followed by a gourmet breakfast served in the wilderness — an awakening for all senses.",
+    name: "Ancient Heritage Odyssey",
+    desc: "Walk through the echoes of time with our resident historian. Explore the nearby spiritual centers and architectural marvels that define Bihar’s 2500-year-old legacy.",
     img: experienceImages.sunrise,
   },
   {
-    name: "Luxury Poolside Evening",
-    desc: "As the sun sets, our infinity pool transforms into an exclusive retreat with floating candles, handcrafted cocktails, and live ambient music. Recline on plush daybeds while the sky paints itself in gold and crimson.",
+    name: "Vedic Wellness Retreat",
+    desc: "A personalized session of sound healing and Ayurvedic therapeutic mastery, followed by a guided meditation in our secret garden pavilion.",
     img: experienceImages.poolside,
   },
   {
-    name: "Bonfire & Live Music Night",
-    desc: "Gather around a crackling bonfire under an endless star-filled sky. Local musicians perform soulful melodies while our chefs prepare artisan s'mores and warm spiced beverages — an evening of pure magic.",
+    name: "Artisanal Bonfire Gala",
+    desc: "Gather around a crackling bonfire under an endless star-filled sky. Local musicians perform soulful melodies while our chefs prepare artisan delicacies.",
     img: experienceImages.bonfire,
   },
 ];
@@ -78,15 +78,19 @@ const galleryImages = [
   { src: experienceImages.gallery7, alt: "Garden courtyard", span: "col-span-2 row-span-1" },
 ];
 
+import SEO from "@/components/SEO";
+
 const Experiences = () => {
-  useEffect(() => {
-    document.title = "Curated Experiences & Activities | Diamond Resort";
-  }, []);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   return (
     <div className="bg-background text-foreground pb-24 lg:pb-0">
+      <SEO
+        title="Curated Experiences & Activities | Diamond Resort & Spa"
+        description="Immerse yourself in local culture with our curated experiences. From Ganga sunset rituals to Vedic wellness retreats, your adventure awaits."
+        keywords="luxury experiences Bihar, Ganga sunset dining, cultural tours Bihar, wellness retreat Patna, Diamond Resort activities"
+      />
       <Navbar />
 
       {/* ───── Hero ───── */}
@@ -96,7 +100,7 @@ const Experiences = () => {
             src={experienceImages.hero}
             alt="Unforgettable experiences at The Diamond Resort"
             className="w-full h-full object-cover animate-slow-zoom scale-110 origin-center opacity-80"
-            fetchPriority="high" decoding="async"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/40 to-primary/90" />
         </div>
@@ -110,9 +114,9 @@ const Experiences = () => {
             </div>
           </div>
 
-          <h1 className="font-display font-normal leading-[1.1] text-primary-foreground tracking-tight mb-8" style={{ fontSize: "clamp(2.2rem, 7vw, 5rem)" }}>
+          <h1 className="font-display font-normal leading-[1.1] text-primary-foreground tracking-tight mb-8" style={{ fontSize: "clamp(2.5rem, 8vw, 6rem)" }}>
             <div className="overflow-hidden pb-2">
-              <span className="block" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1s both" }}>Unforgettable</span>
+              <span className="block" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1s both" }}>Curated</span>
             </div>
             <div className="overflow-hidden pb-2">
               <span className="block italic shimmer-text" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.2s both" }}>Experiences.</span>
@@ -121,7 +125,7 @@ const Experiences = () => {
 
           <div className="overflow-hidden mb-12 max-w-2xl">
             <p className="font-body text-primary-foreground/90 leading-relaxed" style={{ fontSize: "clamp(1rem, 3.5vw, 1.25rem)", animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.4s both" }}>
-              From soul-stirring sunrises to enchanting candlelit evenings — every moment at The Diamond Resort is designed to become a cherished memory.
+              Experience a collection of bespoke journeys designed to awaken your senses and immerse you in the profound spiritual and cultural heritage of Bihar.
             </p>
           </div>
 
@@ -149,7 +153,7 @@ const Experiences = () => {
         <ScrollReveal className="max-w-4xl mx-auto text-center relative z-10">
           <span className="font-label font-semibold text-xs text-foreground tracking-[0.25em] mb-4 block uppercase">Our Philosophy</span>
           <h2 className="font-display font-light italic text-foreground tracking-tight leading-tight mb-8" style={{ fontSize: "clamp(1.75rem, 5vw, 3.5rem)" }}>
-            "We do not simply offer stays — we craft experiences that awaken the soul and linger in memory forever."
+            "We don't just provide activities; we craft portals to a more profound state of being."
           </h2>
           <div className="flex items-center justify-center gap-4">
             <div className="w-12 h-[1px] bg-foreground/30" />

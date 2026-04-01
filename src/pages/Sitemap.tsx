@@ -3,6 +3,7 @@ import { Diamond } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import SEO from "@/components/SEO";
 
 const pages = [
   { path: "/", label: "Home", description: "Welcome to Bihar's finest ultra-luxury sanctuary" },
@@ -15,6 +16,11 @@ const pages = [
 const Sitemap = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEO 
+        title="Sitemap | Diamond Resort & Spa"
+        description="Navigate through Diamond Resort & Spa's luxury offerings. Find links to our suites, dining, experiences, and reservation pages."
+        keywords="Diamond Resort sitemap, luxury hotel pages, Patna resort navigation"
+      />
       <Navbar />
       <main className="pt-32 pb-20 px-6 lg:px-12 max-w-4xl mx-auto">
         <ScrollReveal>

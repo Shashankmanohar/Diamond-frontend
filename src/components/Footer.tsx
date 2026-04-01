@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Diamond, MapPin } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import { WHATSAPP_LINK, WHATSAPP_NUMBER, INSTAGRAM_URL } from "@/config";
 
 const GOOGLE_MAPS_URL =
   "https://www.google.com/maps/place/Dimond+resort/@25.2998504,85.4778411,18.57z/data=!4m6!3m5!1s0x39f28d000d6c984b:0xbf54633c3d738d22!8m2!3d25.3006807!4d85.4769175!16s%2Fg%2F11yq30jjxt";
@@ -15,7 +16,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 max-w-7xl mx-auto mb-16">
           {/* Brand */}
           <div className="flex flex-col items-center lg:items-start lg:col-span-1">
-            <img src="/logo.png" alt="Diamond Resort" className="w-24 h-24 object-contain mb-4 hover:scale-110 transition-transform duration-700 ease-luxury" />
+            <img src="/DiamondResort.webp" alt="Diamond Resort" className="w-40 h-40 object-contain mb-4 hover:scale-110 transition-transform duration-700 ease-luxury" />
             <span className="font-label font-medium text-accent text-xs tracking-[0.25em] mb-4 block uppercase">
               DIAMOND RESORT
             </span>
@@ -42,13 +43,13 @@ const Footer = () => {
                 Connect
               </h5>
               <ul className="flex flex-col items-center lg:items-start gap-4 text-sm font-body text-primary-foreground/60">
-                <li><a href="#" className="footer-link">Instagram</a></li>
-                <li><a href="https://wa.me/918092719700" target="_blank" rel="noopener noreferrer" className="footer-link">Contact</a></li>
+                <li><a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="footer-link">Instagram</a></li>
+                <li><a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="footer-link">Contact</a></li>
                 <li><Link to="/sitemap" className="footer-link">Sitemap</Link></li>
               </ul>
             </div>
           </div>
-
+ 
           {/* Location Card */}
           <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 flex flex-col items-center lg:items-start text-center lg:text-left hover:bg-white/10 hover:-translate-y-1 transition-all duration-500 ease-luxury group">
             <MapPin className="w-6 h-6 text-accent mb-4 group-hover:-translate-y-1 group-hover:scale-110 transition-transform duration-500 ease-luxury" />
@@ -56,7 +57,7 @@ const Footer = () => {
               Diamond Resort<br />
               Patna–Bakhtiyarpur Road,<br />
               Bihar 800001, India<br />
-              <span className="text-accent font-semibold">T: +91 80927 19700</span>
+              <span className="text-accent font-semibold">T: +{WHATSAPP_NUMBER.slice(0,2)} {WHATSAPP_NUMBER.slice(2,7)} {WHATSAPP_NUMBER.slice(7)}</span>
             </p>
             <a
               href={GOOGLE_MAPS_URL}
@@ -92,8 +93,8 @@ const Footer = () => {
           </span>
         </div>
         <div className="flex gap-6">
-          <a href="#" className="footer-link">Privacy</a>
-          <a href="#" className="footer-link">Terms</a>
+          <Link to="/privacy" className="footer-link">Privacy</Link>
+          <Link to="/terms" className="footer-link">Terms</Link>
           <Link to="/sitemap" className="footer-link">Sitemap</Link>
         </div>
       </div>

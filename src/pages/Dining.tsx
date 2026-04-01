@@ -7,29 +7,30 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { Utensils, Star, ArrowRight, Users, Clock, Sparkles, ChefHat, CalendarPlus, PartyPopper, Briefcase, Heart, Gift, GlassWater, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import SEO from "@/components/SEO";
 
 const cateringImages = {
-  hero: "https://images.unsplash.com/photo-1555244162-803834f70033?w=1280&q=55&fm=webp",
-  intro: "https://images.unsplash.com/photo-1530062845289-9109b2c9c868?w=640&q=55&fm=webp",
-  wedding: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=480&q=50&fm=webp",
-  engagement: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=480&q=50&fm=webp",
-  reception: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=480&q=50&fm=webp",
-  birthday: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=480&q=50&fm=webp",
-  corporate: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=480&q=50&fm=webp",
-  private: "https://images.unsplash.com/photo-1529543544282-ea702407d1df?w=480&q=50&fm=webp",
-  buffet1: "https://images.unsplash.com/photo-1555244162-803834f70033?w=480&q=50&fm=webp",
-  buffet2: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=480&q=50&fm=webp",
-  livecounter: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=480&q=50&fm=webp",
-  dessert: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=480&q=50&fm=webp",
-  plated: "https://images.unsplash.com/photo-1546039907-7e6588fddae0?w=480&q=50&fm=webp",
-  gallery1: "https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=320&q=50&fm=webp",
-  gallery2: "https://images.unsplash.com/photo-1550966871-3ed3cdb51f3a?w=320&q=50&fm=webp",
-  gallery3: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=320&q=50&fm=webp",
-  gallery4: "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=320&q=50&fm=webp",
-  gallery5: "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=320&q=50&fm=webp",
-  gallery6: "https://images.unsplash.com/photo-1560624052-449f5ddf0c31?w=320&q=50&fm=webp",
-  reservation: "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=960&q=50&fm=webp",
-  closing: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=960&q=50&fm=webp",
+  hero: "/Resortphoto/dining_main.webp",
+  intro: "/Resortphoto/hero_home.webp",
+  wedding: "/Resortphoto/suite_diamond.webp",
+  engagement: "/Resortphoto/garden_view.webp",
+  reception: "/Resortphoto/heritage_arch.webp",
+  birthday: "/Resortphoto/gallery_5.webp",
+  corporate: "/Resortphoto/arch_signature.webp",
+  private: "/Resortphoto/suite_executive.webp",
+  buffet1: "/Resortphoto/dining_aurum.webp",
+  buffet2: "/Resortphoto/dining_cellar.webp",
+  livecounter: "/Resortphoto/dining_veranda.webp",
+  dessert: "/Resortphoto/gallery_1.webp",
+  plated: "/Resortphoto/gallery_2.webp",
+  gallery1: "/Resortphoto/gallery_1.webp",
+  gallery2: "/Resortphoto/gallery_2.webp",
+  gallery3: "/Resortphoto/gallery_3.webp",
+  gallery4: "/Resortphoto/gallery_4.webp",
+  gallery5: "/Resortphoto/gallery_5.webp",
+  gallery6: "/Resortphoto/gallery_6.webp",
+  reservation: "/Resortphoto/hero_suites.webp",
+  closing: "/Resortphoto/garden_view.webp",
 };
 
 const cateringServices = [
@@ -58,9 +59,6 @@ const processSteps = [
 ];
 
 const Dining = () => {
-  useEffect(() => {
-    document.title = "Luxury Event Catering | Diamond Resort Patna";
-  }, []);
   const [guestCount, setGuestCount] = useState(100);
   const [formData, setFormData] = useState({ name: "", phone: "", eventDate: "", eventType: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
@@ -79,7 +77,7 @@ const Dining = () => {
         body: JSON.stringify({
           type: "event",
           name: formData.name,
-          email: formData.name + "@enquiry.local",
+          email: "",
           phone: formData.phone,
           event_type: formData.eventType || null,
           guest_count: guestCount,
@@ -102,6 +100,11 @@ const Dining = () => {
 
   return (
     <div className="bg-background text-foreground pb-24 lg:pb-0">
+      <SEO 
+        title="Exquisite Culinary Experiences | Diamond Resort & Spa"
+        description="Savor gourmet cuisine at our signature restaurants. From traditional Indian feasts to international fine dining, every meal is a celebration."
+        keywords="luxury dining Bihar, best restaurants Patna, Diamond Resort cuisine, fine dining Bihar, wedding catering Patna"
+      />
       <Navbar />
 
       {/* ───── Hero ───── */}
@@ -111,7 +114,7 @@ const Dining = () => {
             src={cateringImages.hero}
             alt="Luxury catering setup at The Diamond Resort"
             className="w-full h-full object-cover animate-slow-zoom scale-110 origin-center opacity-80"
-            fetchPriority="high" decoding="async"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/40 to-primary/90" />
         </div>
@@ -127,16 +130,16 @@ const Dining = () => {
 
           <h1 className="font-display font-normal leading-[1.1] text-primary-foreground tracking-tight mb-8" style={{ fontSize: "clamp(2.2rem, 7vw, 5rem)" }}>
             <div className="overflow-hidden pb-2">
-              <span className="block" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1s both" }}>Luxury Catering for</span>
+              <span className="block" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1s both" }}>Bespoke</span>
             </div>
             <div className="overflow-hidden pb-2">
-              <span className="block italic shimmer-text" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.2s both" }}>Your Special Events.</span>
+              <span className="block italic shimmer-text" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.2s both" }}>Events & Dining.</span>
             </div>
           </h1>
 
           <div className="overflow-hidden mb-12 max-w-2xl">
             <p className="font-body text-primary-foreground/90 leading-relaxed" style={{ fontSize: "clamp(1rem, 3.5vw, 1.25rem)", animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.4s both" }}>
-              Exquisite catering services crafted for unforgettable celebrations at Bihar's most exclusive resort. We do not operate a public restaurant — instead, every culinary experience is designed exclusively for events hosted at our venue.
+              From grand galas to intimate celebrations — we transform your vision into an extraordinary sensory journey with world-class gastronomy and Bihar’s most exclusive backdrop.
             </p>
           </div>
 
@@ -159,7 +162,7 @@ const Dining = () => {
           <ScrollReveal className="text-center mb-16">
             <span className="font-label font-semibold text-xs text-foreground tracking-[0.25em] mb-4 block uppercase">Our Philosophy</span>
             <h2 className="font-display font-light italic text-foreground tracking-tight leading-tight mb-8" style={{ fontSize: "clamp(1.75rem, 5vw, 3.5rem)" }}>
-              "We believe every celebration deserves a culinary experience as extraordinary as the occasion itself."
+              "Gastronomy is the art of using food to create happiness, and we elevate it into a legacy of taste."
             </h2>
             <div className="flex items-center justify-center gap-4">
               <div className="w-12 h-[1px] bg-foreground/30" />
@@ -224,7 +227,7 @@ const Dining = () => {
                   </div>
                   <div className="p-6">
                     <h3 className="font-display font-medium text-xl text-primary-foreground mb-2 group-hover:text-accent transition-colors duration-500 ease-luxury">{svc.name}</h3>
-                    <p className="font-body text-sm text-primary-foreground/60 leading-relaxed">{svc.desc}</p>
+                    <p className="font-body text-sm text-primary-foreground/60 leading-relaxed max-w-[280px]">{svc.desc}</p>
                   </div>
                 </div>
               </ScrollReveal>

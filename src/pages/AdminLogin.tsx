@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Diamond, LogIn, Mail, Lock } from "lucide-react";
 import { API_ENDPOINTS } from "@/config";
+import SEO from "@/components/SEO";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -40,6 +41,11 @@ const AdminLogin = () => {
 
   return (
     <div className="min-h-screen bg-primary flex items-center justify-center px-4">
+      <SEO 
+        title="Admin Login | Diamond Resort & Spa"
+        description="Secure access to the Diamond Resort administration portal."
+        keywords="admin login, resort management, Diamond Resort portal"
+      />
       <div className="w-full max-w-md">
         <div className="text-center mb-10">
           <img src="/logo.png" alt="Diamond Resort" className="w-40 h-40 object-contain mx-auto mb-4" />

@@ -21,32 +21,36 @@ const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 
 const queryClient = new QueryClient();
 
+import { HelmetProvider } from "react-helmet-async";
+
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Suspense fallback={<PagePreloader />}>
-          <RouteTransition>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/suites" element={<Suites />} />
-              <Route path="/dining" element={<Dining />} />
-              <Route path="/reserve" element={<Reserve />} />
-              <Route path="/experiences" element={<Experiences />} />
-              <Route path="/sitemap" element={<Sitemap />} />
-              <Route path="/admin" element={<AdminLogin />} />
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </RouteTransition>
-        </Suspense>
-        <WhatsAppButton />
-        <MobileLuxuryNav />
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Suspense fallback={<PagePreloader />}>
+            <RouteTransition>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/suites" element={<Suites />} />
+                <Route path="/dining" element={<Dining />} />
+                <Route path="/reserve" element={<Reserve />} />
+                <Route path="/experiences" element={<Experiences />} />
+                <Route path="/sitemap" element={<Sitemap />} />
+                <Route path="/admin" element={<AdminLogin />} />
+                <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </RouteTransition>
+          </Suspense>
+          <WhatsAppButton />
+          <MobileLuxuryNav />
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;

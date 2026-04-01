@@ -27,11 +27,11 @@ const Preloader = () => {
       </div>
       <div className="overflow-hidden">
         <h1
-          className={`font-label font-medium text-gold text-xs tracking-[0.2em] transition-transform duration-700 ease-out ${
-            phase === "draw" ? "translate-y-full" : "translate-y-0"
+          className={`font-label font-bold text-gold text-[10px] md:text-sm tracking-[0.5em] transition-all duration-1000 ease-luxury uppercase ${
+            phase === "draw" ? "translate-y-full opacity-0" : "translate-y-0 opacity-100"
           }`}
         >
-          T D R
+          The Diamond Resort
         </h1>
       </div>
     </div>
