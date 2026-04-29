@@ -35,7 +35,7 @@ const Footer = () => {
                 <li><Link to="/suites" className="footer-link">Suites</Link></li>
                 <li><Link to="/dining" className="footer-link">Catering</Link></li>
                 <li><Link to="/experiences" className="footer-link">Experiences</Link></li>
-                <li><Link to="/reserve" className="footer-link">Reserve</Link></li>
+                <li><a href="tel:+918092719700" className="footer-link">Call Now</a></li>
               </ul>
             </div>
             <div>

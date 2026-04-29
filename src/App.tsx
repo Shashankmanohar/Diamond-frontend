@@ -5,15 +5,17 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import WhatsAppButton from "./components/WhatsAppButton";
-import MobileLuxuryNav from "./components/MobileLuxuryNav";
+
 import PagePreloader from "./components/PagePreloader";
 import RouteTransition from "./components/RouteTransition";
 
 const Index = lazy(() => import("./pages/Index"));
 const Suites = lazy(() => import("./pages/Suites"));
 const Dining = lazy(() => import("./pages/Dining"));
-const Reserve = lazy(() => import("./pages/Reserve"));
 const Experiences = lazy(() => import("./pages/Experiences"));
+const ExperienceDetail = lazy(() => import("./pages/ExperienceDetail"));
+const Events = lazy(() => import("./pages/Events"));
+const Gallery = lazy(() => import("./pages/Gallery"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Sitemap = lazy(() => import("./pages/Sitemap"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
@@ -36,8 +38,10 @@ const App = () => (
                 <Route path="/" element={<Index />} />
                 <Route path="/suites" element={<Suites />} />
                 <Route path="/dining" element={<Dining />} />
-                <Route path="/reserve" element={<Reserve />} />
                 <Route path="/experiences" element={<Experiences />} />
+                <Route path="/experiences/:type" element={<ExperienceDetail />} />
+                <Route path="/events/:type" element={<Events />} />
+                <Route path="/gallery" element={<Gallery />} />
                 <Route path="/sitemap" element={<Sitemap />} />
                 <Route path="/admin" element={<AdminLogin />} />
                 <Route path="/admin/dashboard" element={<AdminDashboard />} />
@@ -46,7 +50,6 @@ const App = () => (
             </RouteTransition>
           </Suspense>
           <WhatsAppButton />
-          <MobileLuxuryNav />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

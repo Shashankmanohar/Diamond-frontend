@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Diamond, ArrowRight, ArrowUpRight, Star, ShieldCheck, Trophy, Sparkles, MapPin, Sunset, Flower2, Dumbbell, BookOpen, Clapperboard, ChefHat, Key, Crown, Building2, Leaf, Palette, Wine, Award, Medal, ChevronLeft, ChevronRight, Utensils } from "lucide-react";
 import SEO from "@/components/SEO";
+import Testimonials from "@/components/Testimonials";
 
 const Index = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -64,7 +65,7 @@ const Index = () => {
       <Navbar />
 
       {/* Hero */}
-      <header className="relative w-full h-[90svh] min-h-[500px] overflow-hidden flex items-center justify-center">
+      <header className="relative w-full h-screen min-h-[500px] overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0 overflow-hidden bg-burgundy">
           <img
             src="/Resortphoto/hero_home.webp"
@@ -153,7 +154,7 @@ const Index = () => {
                   <span className="font-label text-[10px] tracking-[0.2em] text-gold uppercase mt-2">Rating</span>
                 </div>
               </div>
-              <Link to="/reserve" className="font-label font-bold text-[10px] tracking-[0.3em] uppercase text-burgundy hover:text-gold transition-colors inline-block pt-4 border-b border-gold/50">Experience it</Link>
+              <Link to="/suites" className="font-label font-bold text-[10px] tracking-[0.3em] uppercase text-burgundy hover:text-gold transition-colors inline-block pt-4 border-b border-gold/50">Explore Suites</Link>
             </ScrollReveal>
           </div>
           <ScrollReveal type="scale" className="w-full lg:w-1/2 h-[50vh] lg:h-auto overflow-hidden group">
@@ -206,9 +207,9 @@ const Index = () => {
                             <span>{room.feature}</span>
                           </div>
                         </div>
-                        <Link to="/reserve" className="w-full bg-transparent border border-cream/30 text-cream font-label font-semibold text-xs tracking-[0.2em] py-4 rounded-xl hover:bg-cream hover:border-cream hover:text-burgundy transition-all duration-500 ease-luxury flex items-center justify-center gap-2 btn-shimmer hover:-translate-y-[2px] hover:scale-[1.02] active:scale-[0.98]">
-                          <span className="relative z-10 flex items-center gap-2">RESERVE <ArrowRight className="w-4 h-4" /></span>
-                        </Link>
+                        <a href="tel:+918092719700" className="w-full bg-transparent border border-cream/30 text-cream font-label font-semibold text-xs tracking-[0.2em] py-4 rounded-xl hover:bg-cream hover:border-cream hover:text-burgundy transition-all duration-500 ease-luxury flex items-center justify-center gap-2 btn-shimmer hover:-translate-y-[2px] hover:scale-[1.02] active:scale-[0.98]">
+                          <span className="relative z-10 flex items-center gap-2">CALL NOW <ArrowRight className="w-4 h-4" /></span>
+                        </a>
                       </div>
                     </div>
                   </ScrollReveal>
@@ -319,6 +320,7 @@ const Index = () => {
                 <span className="bg-gold text-burgundy w-max font-label font-semibold text-xs px-3 py-1 rounded-full mb-4 shadow-sm">SIGNATURE</span>
                 <h3 className="font-display font-medium italic text-4xl text-cream mb-2 tracking-tight group-hover:text-gold transition-colors duration-500 ease-luxury">Aurum</h3>
                 <p className="font-body text-cream/90 mb-6 max-w-sm">Award-winning pan-Asian fusion served beneath gold-leafed ceilings with panoramic Ganga views.</p>
+                <Link to="/dining" className="font-label font-bold text-[10px] tracking-[0.3em] uppercase text-gold hover:text-white transition-colors inline-block pt-4 border-b border-gold/50 w-max mt-2">Explore Dining</Link>
               </div>
             </ScrollReveal>
 
@@ -361,7 +363,7 @@ const Index = () => {
                   <span className="text-gold mb-6 block">{exp.icon}</span>
                   <h3 className="font-display font-medium italic text-4xl lg:text-5xl text-burgundy mb-6 tracking-tight">{exp.title}</h3>
                   <p className="font-body text-lg text-burgundy/70 mb-8 leading-relaxed max-w-md">{exp.desc}</p>
-                  <Link to="/reserve" className="font-label font-bold text-[10px] tracking-[0.3em] uppercase text-burgundy hover:text-gold transition-colors inline-block pt-4 border-b border-gold/50">
+                  <Link to="/experiences" className="font-label font-bold text-[10px] tracking-[0.3em] uppercase text-burgundy hover:text-gold transition-colors inline-block pt-4 border-b border-gold/50">
                     Discover More
                   </Link>
                 </ScrollReveal>
@@ -592,6 +594,8 @@ const Index = () => {
         </ScrollReveal>
       </section>
 
+      <Testimonials />
+
       {/* Stay in Touch - Newsletter */}
       <section id="newsletter" className="bg-void py-8 lg:py-12 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -628,11 +632,11 @@ const Index = () => {
 
         <ScrollReveal className="relative z-10 px-6 flex flex-col items-center">
           <img src="/DiamondResort.webp" alt="Diamond Resort" className="w-80 h-80 object-contain mb-6 animate-float-premium" />
-          <h2 className="font-display font-light text-5xl lg:text-7xl text-cream leading-tight mb-8 tracking-tight">Secure Your Place<br />Among the Stars</h2>
-          <Link to="/reserve" className="bg-cream text-burgundy font-label font-semibold text-sm tracking-[0.2em] px-10 py-5 rounded-full transition-all duration-500 ease-luxury shadow-[0_0_30px_rgba(201,168,76,0.1)] hover:shadow-[0_10px_40px_rgba(201,168,76,0.35)] flex items-center gap-3 btn-shimmer hover:-translate-y-[4px] hover:scale-[1.02] active:scale-95 group border border-transparent hover:border-gold/50">
-            <span className="relative z-10">BEGIN RESERVATION</span>
+          <h2 className="font-display font-light text-5xl lg:text-7xl text-cream leading-tight mb-8 tracking-tight text-glow">Secure Your Place<br />Among the Stars</h2>
+          <a href="tel:+918092719700" className="hover-lift bg-cream text-burgundy font-label font-semibold text-sm tracking-[0.2em] px-10 py-5 rounded-full transition-all duration-500 ease-luxury flex items-center gap-3 btn-shimmer group border border-transparent hover:border-gold/50">
+            <span className="relative z-10">CALL TO BOOK</span>
             <ArrowUpRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-400 ease-luxury" />
-          </Link>
+          </a>
         </ScrollReveal>
       </section>
 

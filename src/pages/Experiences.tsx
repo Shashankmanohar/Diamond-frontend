@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import Testimonials from "@/components/Testimonials";
 import { Sparkles, ArrowRight, Star, Mountain, TreePine, Heart, Briefcase, Flame, Music, Sunset, Waves, Quote } from "lucide-react";
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
@@ -227,13 +228,13 @@ const Experiences = () => {
                         {exp.name}
                       </h3>
                       <p className="font-body text-lg text-foreground/70 leading-relaxed mb-8">{exp.desc}</p>
-                      <Link
-                        to="/reserve"
+                      <a
+                        href="tel:+918092719700"
                         className="btn-shimmer inline-flex items-center gap-3 bg-primary text-primary-foreground font-label font-semibold text-xs tracking-[0.2em] px-8 py-4 rounded-full hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(61,12,30,0.2)] active:scale-95 transition-all duration-500 ease-luxury"
                       >
-                        <span className="relative z-10">LEARN MORE</span>
+                        <span className="relative z-10">CALL TO BOOK</span>
                         <ArrowRight className="relative z-10 w-4 h-4" />
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 </ScrollReveal>
@@ -270,6 +271,13 @@ const Experiences = () => {
               </ScrollReveal>
             ))}
           </div>
+          
+          <div className="mt-12 text-center">
+            <Link to="/gallery" className="inline-flex items-center gap-4 font-label font-bold text-[10px] tracking-[0.3em] uppercase text-accent hover:text-white transition-colors border-b border-accent/50 pb-2 w-max">
+              View Full Gallery
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
 
         {/* Lightbox */}
@@ -295,60 +303,7 @@ const Experiences = () => {
         )}
       </section>
 
-      {/* ───── Guest Testimonials ───── */}
-      <section className="bg-background py-24 lg:py-32 border-t border-border/5">
-        <div className="max-w-4xl mx-auto px-5 lg:px-12">
-          <ScrollReveal className="text-center mb-16">
-            <span className="font-label font-semibold text-xs text-foreground tracking-[0.25em] mb-4 block uppercase">Guest Voices</span>
-            <h2 className="font-display font-medium text-foreground tracking-tight" style={{ fontSize: "clamp(2rem, 5vw, 3rem)" }}>
-              What Our Guests Say
-            </h2>
-          </ScrollReveal>
-
-          <ScrollReveal>
-            <div className="relative bg-muted rounded-[2rem] p-8 lg:p-12 border border-border/10">
-              <Quote className="w-10 h-10 text-accent/30 mb-6" />
-              <motion.div
-                key={activeTestimonial}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <p className="font-body text-xl lg:text-2xl text-foreground/80 leading-relaxed mb-8 italic">
-                  "{testimonials[activeTestimonial].text}"
-                </p>
-                <div className="flex items-center gap-4">
-                  <img
-                    src={testimonials[activeTestimonial].img}
-                    alt={testimonials[activeTestimonial].name}
-                    className="w-14 h-14 rounded-full object-cover border-2 border-accent/30"
-                    loading="lazy"
-                  />
-                  <div>
-                    <p className="font-display font-medium text-foreground text-sm">{testimonials[activeTestimonial].name}</p>
-                    <div className="flex gap-1 mt-1">
-                      {Array.from({ length: testimonials[activeTestimonial].rating }).map((_, s) => (
-                        <Star key={s} className="w-4 h-4 text-accent fill-accent" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <div className="flex justify-center gap-3 mt-8">
-                {testimonials.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveTestimonial(i)}
-                    className={`w-3 h-3 rounded-full transition-all duration-500 ease-luxury ${i === activeTestimonial ? "bg-accent w-8" : "bg-foreground/20 hover:bg-foreground/40"}`}
-                    aria-label={`View testimonial ${i + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+      <Testimonials />
 
       {/* ───── Booking CTA ───── */}
       <section className="relative w-full min-h-[70vh] overflow-hidden flex items-center justify-center">
@@ -365,13 +320,13 @@ const Experiences = () => {
           <p className="font-body text-lg lg:text-xl text-primary-foreground/80 leading-relaxed mb-10 max-w-xl mx-auto">
             Whether it's a sunrise trek or a private celebration, our concierge team will design every detail to surpass your imagination.
           </p>
-          <Link
-            to="/reserve"
+          <a
+            href="tel:+918092719700"
             className="btn-shimmer inline-flex items-center gap-3 bg-accent text-accent-foreground font-label font-semibold text-xs tracking-[0.2em] px-10 py-5 rounded-full hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(201,168,76,0.3)] active:scale-95 transition-all duration-500 ease-luxury"
           >
-            <span className="relative z-10">PLAN YOUR EXPERIENCE</span>
+            <span className="relative z-10">CALL TO PLAN</span>
             <ArrowRight className="relative z-10 w-4 h-4" />
-          </Link>
+          </a>
         </ScrollReveal>
       </section>
 

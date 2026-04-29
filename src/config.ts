@@ -13,4 +13,4 @@ export const API_ENDPOINTS = {
 export const WHATSAPP_NUMBER = "918092719700";
 export const WHATSAPP_MESSAGE = "Hello! I'd like to enquire about The Diamond Resort.";
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
-export const INSTAGRAM_URL = "https://www.instagram.com/diamondresort_offical?igsh=aTZwNjVxMWRsamZ1&utm_source=qrin";
+export const INSTAGRAM_URL = "https://www.instagram.com/diamondresort_official?igsh=MW9jM2wycTVxazhweg==";

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import Testimonials from "@/components/Testimonials";
 import { Star, ArrowRight, Crown, Wine, Clock, ShieldCheck, Sparkles, Utensils, Zap, MapPin, Users } from "lucide-react";
 import SEO from "@/components/SEO";
 
@@ -109,12 +110,12 @@ const Suites = () => {
                 </div>
               </div>
 
-              <Link to="/reserve" className="inline-flex items-center gap-6 group/link">
-                <span className="font-medium text-xs tracking-[0.3em] uppercase text-burgundy">Explore The Suite</span>
+              <a href="tel:+918092719700" className="inline-flex items-center gap-6 group/link">
+                <span className="font-medium text-xs tracking-[0.3em] uppercase text-burgundy">Call To Book</span>
                 <div className="w-12 h-12 rounded-full border border-burgundy/20 flex items-center justify-center group-hover/link:bg-burgundy group-hover/link:text-cream transition-all duration-500">
                   <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
                 </div>
-              </Link>
+              </a>
             </div>
           </ScrollReveal>
         </div>
@@ -129,7 +130,7 @@ const Suites = () => {
               <p className="text-burgundy/60 text-lg italic">A taxonomy of comfort, from sun-drenched studios to multi-level private villas.</p>
             </div>
             <div className="h-[1px] flex-grow bg-burgundy/10 mx-12 hidden lg:block mb-6" />
-            <button className="border border-burgundy/20 px-10 py-4 font-medium text-xs tracking-[0.3em] uppercase hover:bg-burgundy hover:text-cream transition-all duration-500">View Catalog</button>
+            <Link to="/gallery" className="inline-block text-center border border-burgundy/20 px-10 py-4 font-medium text-xs tracking-[0.3em] uppercase hover:bg-burgundy hover:text-cream transition-all duration-500">View Gallery</Link>
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
@@ -169,6 +170,10 @@ const Suites = () => {
                 <p className="text-cream/60 text-lg leading-relaxed mt-8 max-w-lg">
                   Experience hospitality that anticipates your desires before they are spoken.
                 </p>
+                <Link to="/dining" className="inline-flex items-center gap-4 mt-8 font-label font-bold text-[10px] tracking-[0.3em] uppercase text-gold hover:text-white transition-colors border-b border-gold/50 pb-2 w-max">
+                  Discover Our Dining
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </ScrollReveal>
 
               <ScrollReveal>
@@ -196,6 +201,8 @@ const Suites = () => {
         </div>
       </section>
 
+      <Testimonials />
+
       {/* CTA */}
       <section id="reserve" className="relative h-[80vh] flex items-center justify-center text-center overflow-hidden">
         <div className="absolute inset-0 z-0 bg-burgundy">
@@ -205,9 +212,9 @@ const Suites = () => {
         <ScrollReveal className="relative z-10 px-6 max-w-4xl">
           <span className="text-gold text-xs tracking-[0.6em] uppercase font-medium block mb-6">Your Sanctuary Awaits</span>
           <h2 className="font-display text-5xl lg:text-8xl text-cream tracking-tight mb-12">Return to yourself.</h2>
-          <Link to="/reserve" className="bg-cream text-burgundy px-12 py-5 font-medium text-xs tracking-[0.4em] uppercase hover:bg-gold transition-all duration-700 hover:scale-105">
-            Check Availability
-          </Link>
+          <a href="tel:+918092719700" className="bg-cream text-burgundy px-12 py-5 font-medium text-xs tracking-[0.4em] uppercase hover:bg-gold transition-all duration-700 hover:scale-105 inline-block">
+            Call To Book
+          </a>
         </ScrollReveal>
       </section>
 

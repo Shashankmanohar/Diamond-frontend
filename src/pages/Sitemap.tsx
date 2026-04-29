@@ -10,7 +10,6 @@ const pages = [
   { path: "/suites", label: "Suites", description: "48 bespoke suites crafted for uncompromising elegance" },
   { path: "/dining", label: "Catering", description: "Award-winning culinary experiences and event catering" },
   { path: "/experiences", label: "Experiences", description: "Curated wellness, spa, and cultural journeys" },
-  { path: "/reserve", label: "Reserve", description: "Book your stay or plan your event" },
 ];
 
 const Sitemap = () => {

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import Testimonials from "@/components/Testimonials";
 import { Utensils, Star, ArrowRight, Users, Clock, Sparkles, ChefHat, CalendarPlus, PartyPopper, Briefcase, Heart, Gift, GlassWater, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -196,6 +197,10 @@ const Dining = () => {
                   </div>
                 ))}
               </div>
+              <Link to="/events" className="inline-flex items-center gap-4 mt-8 font-label font-bold text-[10px] tracking-[0.3em] uppercase text-accent hover:text-foreground transition-colors border-b border-accent/50 pb-2 w-max">
+                Explore Event Spaces
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </ScrollReveal>
           </div>
         </div>
@@ -439,6 +444,8 @@ const Dining = () => {
         </div>
       </section>
 
+      <Testimonials />
+
       {/* ───── Call to Experience ───── */}
       <section className="relative w-full h-[70vh] lg:h-[80vh] overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0 bg-primary">
@@ -453,13 +460,13 @@ const Dining = () => {
           <p className="font-body text-lg lg:text-xl text-primary-foreground/80 leading-relaxed mb-10">
             From intimate celebrations to grand weddings, our catering transforms every event into an extraordinary culinary journey. Let us create an unforgettable experience for your guests.
           </p>
-          <Link
-            to="/reserve"
+          <a
+            href="tel:+918092719700"
             className="btn-shimmer inline-flex items-center gap-3 bg-primary-foreground text-primary font-label font-semibold text-xs tracking-[0.2em] px-10 py-4 rounded-full hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(245,236,215,0.2)] active:scale-95 transition-all duration-500 ease-luxury"
           >
-            <span className="relative z-10">BOOK YOUR EVENT</span>
+            <span className="relative z-10">CALL TO BOOK</span>
             <ArrowRight className="relative z-10 w-4 h-4" />
-          </Link>
+          </a>
         </ScrollReveal>
       </section>
 
