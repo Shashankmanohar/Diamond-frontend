@@ -14,32 +14,10 @@ const Index = () => {
     {
       loop: true,
       align: "center",
-      breakpoints: {
-        "(min-width: 1024px)": { active: false }
-      }
     },
     [Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })]
   );
   const [selectedIndex, setSelectedIndex] = useState(0);
-
-  // Stop autoplay on desktop
-  useEffect(() => {
-    if (!emblaApi) return;
-    const autoplay = emblaApi.plugins()?.autoplay;
-    if (!autoplay) return;
-
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        autoplay.stop();
-      } else {
-        autoplay.play();
-      }
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [emblaApi]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -174,14 +152,14 @@ const Index = () => {
 
         <div className="relative max-w-[100rem] mx-auto group">
           <div className="overflow-hidden px-6 lg:px-12" ref={emblaRef}>
-            <div className="flex lg:grid lg:grid-cols-2 gap-8 lg:gap-12 pb-12 pt-4">
+            <div className="flex pb-12 pt-4">
               {[
                 { name: "The Diamond Suite", desc: "The absolute pinnacle of luxury living with 3,200 sq. ft. of privacy, a saltwater infinity pool, and 24h butler service.", img: "/Resortphoto/suite_diamond.webp", size: "3,200 sq.ft", guests: "Up to 4", feature: "Infinity Pool", badge: "SIGNATURE" },
                 { name: "The Maharaja Chamber", desc: "A tribute to regal heritage, adorned with antique furnishings and silk tapestries, offering a glimpse into royal past.", img: "/Resortphoto/suite_maharaja.webp", size: "1,200 sq.ft", guests: "Up to 3", feature: "Regal Decor" },
                 { name: "Grand Deluxe Room", desc: "Refined elegance overlooking the serene courtyard, featuring hand-woven linens and artisanal touches.", img: "/Resortphoto/suite_deluxe.webp", size: "650 sq.ft", guests: "Up to 2", feature: "Courtyard View" },
                 { name: "Executive Oasis Suite", desc: "The perfect blend of productivity and relaxation, featuring a private study and a spa-inspired marble bathroom.", img: "/Resortphoto/suite_executive.webp", size: "850 sq.ft", guests: "Up to 2", feature: "Private Study" },
               ].map((room, i) => (
-                <div key={room.name} className="flex-[0_0_100%] md:flex-[0_0_100%] lg:flex-[0_0_31%] min-w-0">
+                <div key={room.name} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333333%] min-w-0 px-3 sm:px-4">
                   <ScrollReveal type="scale" delay={i * 100}>
                     <div className="bg-burgundy rounded-[2rem] overflow-hidden group/card relative hover:-translate-y-3 hover:shadow-[0_25px_50px_rgba(61,12,30,0.3)] transition-all duration-[600ms] ease-luxury flex flex-col h-full border border-transparent hover:border-gold/30">
                       <div className="relative h-72 lg:h-[26rem] overflow-hidden">
@@ -193,10 +171,10 @@ const Index = () => {
                           </div>
                         )}
                       </div>
-                      <div className="p-8 flex flex-col flex-1">
-                        <h3 className="font-display font-medium italic text-3xl text-cream mb-2 tracking-tight group-hover/card:text-gold transition-colors duration-500 ease-luxury">{room.name}</h3>
-                        <p className="font-body text-base text-cream/70 mb-6 line-clamp-2">{room.desc}</p>
-                        <div className="flex gap-6 mb-8 border-t border-cream/10 pt-6 mt-auto">
+                      <div className="p-6 sm:p-8 flex flex-col flex-1">
+                        <h3 className="font-display font-medium italic text-2xl sm:text-3xl text-cream mb-2 tracking-tight group-hover/card:text-gold transition-colors duration-500 ease-luxury">{room.name}</h3>
+                        <p className="font-body text-sm sm:text-base text-cream/70 mb-4 sm:mb-6 line-clamp-2">{room.desc}</p>
+                        <div className="flex gap-4 sm:gap-6 mb-6 sm:mb-8 border-t border-cream/10 pt-6 mt-auto justify-between">
                           <div className="flex flex-col items-center gap-1 text-cream text-[10px] uppercase tracking-widest opacity-60">
                             <span>{room.size}</span>
                           </div>
@@ -218,30 +196,31 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Navigation Buttons */}
-          <button
-            onClick={scrollPrev}
-            className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-cream/10 backdrop-blur-md border border-cream/20 flex items-center justify-center text-cream hover:bg-gold hover:text-burgundy transition-all duration-500 z-10 opacity-0 group-hover:opacity-100 lg:hidden"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button
-            onClick={scrollNext}
-            className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-cream/10 backdrop-blur-md border border-cream/20 flex items-center justify-center text-cream hover:bg-gold hover:text-burgundy transition-all duration-500 z-10 opacity-0 group-hover:opacity-100 lg:hidden"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-
-          {/* Indicators */}
-          <div className="flex justify-center gap-3 mt-8 lg:hidden">
-            {[0, 1, 2, 3].map((index) => (
-              <button
-                key={index}
-                onClick={() => emblaApi?.scrollTo(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-500 ${selectedIndex === index ? "bg-gold w-8" : "bg-burgundy/20"
-                  }`}
-              />
-            ))}
+          {/* Carousel Controls */}
+          <div className="flex justify-center items-center gap-6 mt-8">
+            <button
+              onClick={scrollPrev}
+              className="w-10 h-10 rounded-full bg-burgundy/5 border border-burgundy/10 flex items-center justify-center text-burgundy hover:bg-gold hover:text-burgundy transition-all duration-500"
+              aria-label="Previous room"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <div className="flex gap-3">
+              {[0, 1, 2, 3].map((index) => (
+                <button
+                  key={index}
+                  onClick={() => emblaApi?.scrollTo(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-500 ${selectedIndex === index ? "bg-gold w-8" : "bg-burgundy/20"}`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={scrollNext}
+              className="w-10 h-10 rounded-full bg-burgundy/5 border border-burgundy/10 flex items-center justify-center text-burgundy hover:bg-gold hover:text-burgundy transition-all duration-500"
+              aria-label="Next room"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
@@ -622,8 +601,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section id="reserve" className="relative h-[40vh] min-h-[300px] flex items-center justify-center text-center overflow-hidden rounded-t-[3rem] mt-12 bg-burgundy">
+      <section id="reserve" className="relative min-h-[500px] lg:min-h-[600px] py-16 lg:py-24 flex items-center justify-center text-center overflow-hidden rounded-t-[3rem] mt-12 bg-burgundy">
         <div className="absolute inset-0 z-0">
           <img src="/Resortphoto/garden_view.webp" alt="Aerial Resort View" className="w-full h-full object-cover animate-slow-zoom mix-blend-overlay opacity-50" loading="lazy" decoding="async" />
           <div className="absolute inset-0 bg-burgundy/60 backdrop-blur-sm" />
@@ -631,7 +609,7 @@ const Index = () => {
         </div>
 
         <ScrollReveal className="relative z-10 px-6 flex flex-col items-center">
-          <img src="/DiamondResort.webp" alt="Diamond Resort" className="w-80 h-80 object-contain mb-6 animate-float-premium" />
+          <img src="/DiamondResort.webp" alt="Diamond Resort" className="w-48 h-48 lg:w-64 lg:h-64 object-contain mb-6 animate-float-premium" />
           <h2 className="font-display font-light text-5xl lg:text-7xl text-cream leading-tight mb-8 tracking-tight text-glow">Secure Your Place<br />Among the Stars</h2>
           <a href="tel:+918092719700" className="hover-lift bg-cream text-burgundy font-label font-semibold text-sm tracking-[0.2em] px-10 py-5 rounded-full transition-all duration-500 ease-luxury flex items-center gap-3 btn-shimmer group border border-transparent hover:border-gold/50">
             <span className="relative z-10">CALL TO BOOK</span>
