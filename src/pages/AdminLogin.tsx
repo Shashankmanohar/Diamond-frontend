@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Diamond, LogIn, Mail, Lock } from "lucide-react";
+import { Diamond, LogIn, Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { API_ENDPOINTS } from "@/config";
 import SEO from "@/components/SEO";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -72,16 +73,23 @@ const AdminLogin = () => {
             />
           </div>
 
-          <div className="relative">
-            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ring/60" />
+          <div className="relative group">
+            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ring/60 group-focus-within:text-ring transition-colors" />
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               required
-              className="w-full bg-primary-foreground/5 border border-primary-foreground/10 rounded-xl pl-12 pr-4 py-4 font-body text-primary-foreground placeholder:text-primary-foreground/30 focus:outline-none focus:border-ring focus:ring-2 focus:ring-ring/20 transition-all duration-300"
+              className="w-full bg-primary-foreground/5 border border-primary-foreground/10 rounded-xl pl-12 pr-12 py-4 font-body text-primary-foreground placeholder:text-primary-foreground/30 focus:outline-none focus:border-ring focus:ring-2 focus:ring-ring/20 transition-all duration-300"
             />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-primary-foreground/30 hover:text-ring transition-colors focus:outline-none"
+            >
+              {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+            </button>
           </div>
 
           <button
