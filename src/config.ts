@@ -2,12 +2,14 @@
  * Global Configuration for Diamond Resort Frontend
  */
 
-export const API_BASE_URL = "https://diamond-backend-smoky.vercel.app";
+export const API_BASE_URL = "http://localhost:5000";
 
 export const API_ENDPOINTS = {
   BOOKINGS: `${API_BASE_URL}/api/bookings`,
   ADMIN_LOGIN: `${API_BASE_URL}/api/admin/login`,
   ADMIN_CHECK_AUTH: `${API_BASE_URL}/api/admin/check-auth`,
+  BLOGS: `${API_BASE_URL}/api/blogs`,
+  UPLOAD: `${API_BASE_URL}/api/upload`,
 };
 
 export const WHATSAPP_NUMBER = "918092719700";

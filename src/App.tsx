@@ -20,6 +20,9 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const Sitemap = lazy(() => import("./pages/Sitemap"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const AdminBlogs = lazy(() => import("./pages/AdminBlogs"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogDetail = lazy(() => import("./pages/BlogDetail"));
 
 const queryClient = new QueryClient();
 
@@ -43,8 +46,11 @@ const App = () => (
                 <Route path="/events/:type" element={<Events />} />
                 <Route path="/gallery" element={<Gallery />} />
                 <Route path="/sitemap" element={<Sitemap />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogDetail />} />
                 <Route path="/admin" element={<AdminLogin />} />
                 <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                <Route path="/admin/blogs" element={<AdminBlogs />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </RouteTransition>

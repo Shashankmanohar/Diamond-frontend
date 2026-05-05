@@ -84,7 +84,7 @@ const Navbar = () => {
 
           <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-display text-primary-foreground tracking-tight hover:text-ring transition-colors">About</Link>
           <div className="h-[1px] w-full bg-white/10" />
-          
+
           {/* Rooms Dropdown Mobile */}
           <div>
             <button onClick={() => setMobileRoomsOpen(!mobileRoomsOpen)} className="w-full flex justify-between items-center text-2xl font-display text-primary-foreground tracking-tight hover:text-ring transition-colors">
@@ -137,7 +137,7 @@ const Navbar = () => {
 
           <Link to="/blog" onClick={() => setMobileMenuOpen(false)} className="text-2xl font-display text-primary-foreground tracking-tight hover:text-ring transition-colors">Blog</Link>
         </div>
-        
+
         <div className="mt-12 flex flex-col gap-4">
           <a href="tel:+918092719700" className="btn-shimmer flex justify-center items-center gap-3 bg-ring text-primary font-label font-bold text-xs tracking-[0.2em] px-8 py-4 rounded-full">
             <span>CALL RESERVATIONS</span>
@@ -163,7 +163,7 @@ const Navbar = () => {
           <Link to="/" className={`nav-link whitespace-nowrap font-label font-medium text-[10px] lg:text-xs tracking-[0.1em] lg:tracking-[0.15em] uppercase ${isHome ? "active" : "opacity-80"}`}>
             Home
           </Link>
-          
+
           <Link to="/about" className={`nav-link whitespace-nowrap font-label font-medium text-[10px] lg:text-xs tracking-[0.1em] lg:tracking-[0.15em] uppercase ${path === "/about" ? "active" : "opacity-80"}`}>
             About
           </Link>
@@ -212,7 +212,7 @@ const Navbar = () => {
           <Link to="/gallery" className={`nav-link whitespace-nowrap font-label font-medium text-[10px] lg:text-xs tracking-[0.1em] lg:tracking-[0.15em] uppercase ${path === "/gallery" ? "active" : "opacity-80"}`}>
             Gallery
           </Link>
-          
+
           <Link to="/blog" className={`nav-link whitespace-nowrap font-label font-medium text-[10px] lg:text-xs tracking-[0.1em] lg:tracking-[0.15em] uppercase ${path.startsWith("/blog") ? "active" : "opacity-80"}`}>
             Blog
           </Link>

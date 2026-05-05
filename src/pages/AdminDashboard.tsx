@@ -177,9 +177,14 @@ const AdminDashboard = () => {
           <Diamond className="w-6 h-6 text-ring" />
           <span className="font-label font-medium text-xs tracking-[0.2em] text-ring">ADMIN DASHBOARD</span>
         </div>
-        <button onClick={handleLogout} className="flex items-center gap-2 text-primary-foreground/60 hover:text-ring transition-colors duration-300 font-label text-xs tracking-wider">
-          <LogOut className="w-4 h-4" /> LOGOUT
-        </button>
+        <div className="flex items-center gap-6">
+          <button onClick={() => navigate("/admin/blogs")} className="text-primary-foreground/60 hover:text-ring transition-colors duration-300 font-label text-xs tracking-wider">
+            BLOGS
+          </button>
+          <button onClick={handleLogout} className="flex items-center gap-2 text-primary-foreground/60 hover:text-ring transition-colors duration-300 font-label text-xs tracking-wider">
+            <LogOut className="w-4 h-4" /> LOGOUT
+          </button>
+        </div>
       </header>
 
       <div className="p-4 lg:p-8 max-w-7xl mx-auto">
