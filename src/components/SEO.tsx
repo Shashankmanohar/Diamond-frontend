@@ -26,6 +26,7 @@ const SEO = ({
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
+      <meta name="google-site-verification" content="0C56lIu4UNJRBsJXsD0xEIbKGbdNQO-d8OQgxfCyRAw" />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
