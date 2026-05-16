@@ -5,7 +5,7 @@ import Autoplay from "embla-carousel-autoplay";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import { Diamond, ArrowRight, ArrowUpRight, Star, ShieldCheck, Trophy, Sparkles, MapPin, Sunset, Flower2, Dumbbell, BookOpen, Clapperboard, ChefHat, Key, Crown, Building2, Leaf, Palette, Wine, Award, Medal, ChevronLeft, ChevronRight, Utensils } from "lucide-react";
+import { Diamond, ArrowRight, ArrowUpRight, ArrowDown, Star, ShieldCheck, Trophy, Sparkles, MapPin, Sunset, Flower2, Dumbbell, BookOpen, Clapperboard, ChefHat, Key, Crown, Building2, Leaf, Palette, Wine, Award, Medal, ChevronLeft, ChevronRight, Utensils } from "lucide-react";
 import SEO from "@/components/SEO";
 import Testimonials from "@/components/Testimonials";
 
@@ -43,62 +43,72 @@ const Index = () => {
       <Navbar />
 
       {/* Hero */}
-      <header className="relative w-full h-screen min-h-[500px] overflow-hidden flex items-center justify-center">
+      <header className="relative w-full h-screen min-h-[600px] overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0 overflow-hidden bg-burgundy">
           <img
             src="/Resortphoto/hero_home.webp"
-            alt="The Diamond Resort - Bihar's Finest Luxury Resort"
-            className="w-full h-full object-cover object-[center_40%] animate-slow-zoom scale-110 origin-center opacity-80"
+            alt="The Diamond Resort - Best Marriage Hall in Bihar Sharif"
+            className="w-full h-full object-cover object-[center_40%] animate-slow-zoom scale-110 origin-center opacity-70"
             decoding="async"
           />
-          <div className="absolute inset-0 backdrop-blur-[2px] bg-burgundy/30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-burgundy/80 via-burgundy/40 to-burgundy/95" />
+          <div className="absolute inset-0 backdrop-blur-[1px] bg-burgundy/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-burgundy/80 via-transparent to-burgundy/90" />
         </div>
 
-        <div className="relative z-20 w-full px-6 lg:px-12 flex flex-col items-center text-center mt-12 lg:mt-0">
-          <div className="overflow-hidden mb-6">
-            <div className="flex items-center gap-4 text-gold" style={{ animation: "heavyRevealUp 1.2s var(--ease-luxury) 0.8s both" }}>
-              <Star className="w-8 h-8" />
-              <span className="font-label font-medium text-base tracking-[0.3em] uppercase">The Diamond Resort</span>
-              <Star className="w-8 h-8" />
+        <div className="relative z-20 w-full px-6 lg:px-12 flex flex-col items-center text-center max-w-5xl mx-auto">
+          <div className="overflow-hidden mb-8" style={{ animation: "heavyRevealUp 1.2s var(--ease-luxury) 0.6s both" }}>
+            <div className="inline-flex items-center gap-3 px-6 py-2 border border-gold/30 rounded-sm backdrop-blur-md bg-white/5">
+              <span className="text-gold text-[10px]">◆</span>
+              <span className="font-label text-gold text-[11px] tracking-[0.4em] uppercase font-bold">Diamond Resort</span>
+              <span className="text-gold text-[10px]">◆</span>
             </div>
           </div>
 
-          <h1 className="font-display font-normal text-5xl md:text-7xl lg:text-8xl leading-[1.1] text-cream tracking-tight mb-8">
-            <div className="overflow-hidden pb-2">
-              <span className="block" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1s both" }}>A Sanctuary Where</span>
-            </div>
-            <div className="overflow-hidden pb-2">
-              <span className="block italic shimmer-text" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.2s both" }}>Luxury Resides.</span>
-            </div>
-          </h1>
+          <div className="overflow-hidden mb-4">
+            <h1 
+              className="font-label text-gold text-xs md:text-sm tracking-[0.3em] uppercase font-semibold block"
+              style={{ animation: "heavyRevealUp 1.2s var(--ease-luxury) 0.8s both" }}
+            >
+              Best Marriage Hall in Bihar Sharif
+            </h1>
+          </div>
 
-          <div className="overflow-hidden mb-12 max-w-xl">
-            <p className="font-body text-lg md:text-xl text-cream/90 leading-relaxed" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.4s both" }}>
-              Crafted for the discerning few. Experience uncompromising elegance and unparalleled service in the heart of India.
+          <div className="font-display font-normal text-5xl md:text-7xl lg:text-8xl leading-[1.1] text-cream tracking-tight mb-8">
+            <div className="overflow-hidden pb-2">
+              <span className="block" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1s both" }}>Where Every Wedding</span>
+            </div>
+            <div className="overflow-hidden pb-2">
+              <span className="block italic text-gold shimmer-text" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.2s both" }}>Becomes Legend</span>
+            </div>
+          </div>
+
+          <div className="overflow-hidden mb-12 max-w-3xl mx-auto">
+            <p className="font-body text-lg md:text-xl text-cream/80 leading-relaxed font-light" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.4s both" }}>
+              Bihar's most celebrated wedding resort and banquet venue in Belsar, Nalanda — where royal décor, lush lawns, and flawless hospitality unite to create memories that last a lifetime.
             </p>
           </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-6" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.6s both" }}>
+            <a href="tel:+918092719700" className="group bg-gold text-burgundy font-label font-bold text-[10px] tracking-[0.3em] px-10 py-5 rounded-full hover:bg-white transition-all duration-500 flex items-center gap-3 shadow-2xl">
+              BOOK YOUR DATE <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <Link to="/venues" className="font-label text-cream/70 hover:text-gold text-[10px] tracking-[0.3em] border-b border-cream/20 hover:border-gold transition-all duration-500 py-2">
+              EXPLORE VENUES
+            </Link>
+          </div>
         </div>
 
-        <div className="hidden lg:flex absolute bottom-12 w-full px-12 justify-between items-end z-20">
-          <div className="flex gap-16" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.6s both" }}>
-            <div className="flex flex-col gap-2 group">
-              <Key className="w-8 h-8 text-gold group-hover:-translate-y-1 group-hover:scale-110 transition-transform duration-500 ease-luxury" />
-              <span className="font-label text-xs tracking-[0.2em] text-cream/80 group-hover:text-cream transition-colors duration-500">48 SUITES</span>
-            </div>
-            <div className="flex flex-col gap-2 group">
-              <ChefHat className="w-8 h-8 text-gold group-hover:-translate-y-1 group-hover:scale-110 transition-transform duration-500 ease-luxury" />
-              <span className="font-label text-xs tracking-[0.2em] text-cream/80 group-hover:text-cream transition-colors duration-500">3 VENUES</span>
-            </div>
-            <div className="flex flex-col gap-2 group">
-              <Crown className="w-8 h-8 text-gold group-hover:-translate-y-1 group-hover:scale-110 transition-transform duration-500 ease-luxury" />
-              <span className="font-label text-xs tracking-[0.2em] text-cream/80 group-hover:text-cream transition-colors duration-500">NO. 1 RATED</span>
-            </div>
+        <div className="absolute bottom-8 w-full px-6 lg:px-12 flex flex-col items-center gap-8 z-20">
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 text-cream/60 font-label text-[10px] tracking-[0.25em] uppercase" style={{ animation: "fadeIn 2s ease-out 2s both" }}>
+            <span>Belsar, Nalanda</span>
+            <span className="text-gold/40">◆</span>
+            <span>Near Bihar Sharif</span>
+            <span className="text-gold/40">◆</span>
+            <span>Bihar</span>
           </div>
-
-          <div className="flex flex-col items-center gap-4" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.8s both" }}>
-            <span className="font-label text-xs text-cream/60 tracking-[0.3em] rotate-90 origin-right translate-x-[-100%]">SCROLL</span>
-            <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-gold to-transparent animate-float-premium" />
+          <div className="animate-bounce text-gold/60 mt-2">
+            <ArrowDown className="w-6 h-6" />
           </div>
         </div>
       </header>
