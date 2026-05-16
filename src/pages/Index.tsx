@@ -1,4 +1,5 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
@@ -9,30 +10,137 @@ import { Diamond, ArrowRight, ArrowUpRight, ArrowDown, Star, ShieldCheck, Trophy
 import SEO from "@/components/SEO";
 import Testimonials from "@/components/Testimonials";
 
-const Index = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    {
-      loop: true,
-      align: "center",
-    },
-    [Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })]
-  );
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
+const StackedCarousel = ({ slides }: { slides: any[] }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const total = slides.length;
 
   useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("select", onSelect);
-  }, [emblaApi, onSelect]);
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % total);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [total]);
 
-  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+  const getPosition = (index: number) => {
+    const diff = (index - activeIndex + total) % total;
+    if (diff === 0) return "center";
+    if (diff === 1 || diff === -(total - 1)) return "right";
+    if (diff === total - 1 || diff === -1) return "left";
+    return "hidden";
+  };
 
+  return (
+    <div className="relative w-full max-w-[100rem] h-full flex items-center justify-center perspective-1000">
+      {/* Decorative Background Text */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
+        <span className="text-[18vw] font-display font-bold text-burgundy/[0.04] whitespace-nowrap uppercase tracking-[0.25em]">
+          Elegance
+        </span>
+      </div>
+
+      {/* Navigation Arrows */}
+      <button 
+        onClick={() => setActiveIndex((prev) => (prev - 1 + total) % total)}
+        className="absolute left-4 lg:left-12 z-40 w-14 h-14 rounded-full border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-burgundy transition-all duration-500 group"
+      >
+        <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+      </button>
+      <button 
+        onClick={() => setActiveIndex((prev) => (prev + 1) % total)}
+        className="absolute right-4 lg:right-12 z-40 w-14 h-14 rounded-full border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-burgundy transition-all duration-500 group"
+      >
+        <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+      </button>
+
+      <AnimatePresence mode="popLayout">
+        {slides.map((slide, index) => {
+          const position = getPosition(index);
+          const isCenter = position === "center";
+          const isLeft = position === "left";
+          const isRight = position === "right";
+          const isHidden = position === "hidden";
+
+          return (
+            <motion.div
+              key={slide.name}
+              initial={false}
+              animate={{
+                x: isCenter ? 0 : isLeft ? -300 : isRight ? 300 : 0,
+                scale: isCenter ? 1 : 0.75,
+                zIndex: isCenter ? 30 : 20,
+                opacity: isHidden ? 0 : isCenter ? 1 : 0.6,
+                rotateY: isCenter ? 0 : isLeft ? 25 : -25,
+                filter: isCenter ? "blur(0px)" : "blur(4px)",
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 200,
+                damping: 25,
+              }}
+              className="absolute w-[300px] md:w-[480px] lg:w-[600px] h-[480px] lg:h-[620px] cursor-pointer"
+              onClick={() => setActiveIndex(index)}
+            >
+              {/* Window Style Card */}
+              <div className="w-full h-full bg-burgundy rounded-[3rem] overflow-hidden shadow-[0_60px_120px_-20px_rgba(61,12,30,0.6)] flex flex-col border border-gold/30">
+                {/* Browser Window Header */}
+                <div className="h-16 bg-gold/10 backdrop-blur-xl border-b border-gold/20 flex items-center px-10 justify-center">
+                  <div className="flex items-center gap-4">
+                    <div className="w-64 h-7 bg-burgundy/40 rounded-full border border-gold/20 flex items-center px-4">
+                      <div className="w-2 h-2 rounded-full bg-gold/30 mr-3" />
+                      <span className="text-[9px] text-gold/60 truncate tracking-[0.2em] uppercase font-medium">diamondresort.in/{slide.name.toLowerCase().replace(/ /g, '-') }</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative flex-1 overflow-hidden">
+                  <img src={slide.img} alt={slide.name} className="w-full h-full object-cover opacity-90" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-burgundy via-transparent to-transparent" />
+                  {slide.badge && (
+                    <div className="absolute top-6 right-6 bg-white/10 backdrop-blur-md text-cream font-label font-semibold text-[10px] px-4 py-2 rounded-full border border-white/20 flex items-center gap-2 shadow-sm">
+                      <Crown className="w-3 h-3 text-gold" /> {slide.badge}
+                    </div>
+                  )}
+                </div>
+
+                <div className="p-8 lg:p-12 bg-burgundy text-cream">
+                  <h3 className="font-display text-2xl lg:text-4xl italic mb-4 text-gold">{slide.name}</h3>
+                  <p className="font-body text-sm lg:text-base text-cream/70 mb-8 line-clamp-2">{slide.desc}</p>
+                  
+                  <div className="flex justify-between items-center border-t border-gold/10 pt-8">
+                    <div className="flex flex-col gap-1">
+                      <span className="font-label text-[9px] tracking-widest text-gold/40 uppercase">Capacity</span>
+                      <span className="font-body text-xs text-cream/80">{slide.guests}</span>
+                    </div>
+                    <div className="flex flex-col gap-1 text-right">
+                      <span className="font-label text-[9px] tracking-widest text-gold/40 uppercase">Highlight</span>
+                      <span className="font-body text-xs text-cream/80">{slide.feature}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </AnimatePresence>
+      
+      {/* Room Counter Overlay */}
+      <div className="absolute top-0 right-10 p-8 flex items-end gap-3 pointer-events-none">
+        <span className="font-display text-8xl text-gold/10">0{activeIndex + 1}</span>
+        <span className="font-label text-sm text-gold/30 mb-4">/ 0{total}</span>
+      </div>
+
+      {/* Floating Elements */}
+      <div className="absolute top-1/4 left-10 -translate-x-1/2 opacity-30 hidden xl:block">
+        <Crown className="w-24 h-24 text-gold animate-float-premium" />
+      </div>
+      <div className="absolute bottom-1/4 right-10 translate-x-1/2 opacity-30 hidden xl:block">
+        <Diamond className="w-24 h-24 text-gold animate-float-premium" style={{ animationDelay: '2s' }} />
+      </div>
+    </div>
+  );
+};
+
+const Index = () => {
   return (
     <div className="bg-cream text-burgundy pb-24 lg:pb-0">
       <SEO
@@ -151,87 +259,29 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Rooms */}
-      <section id="rooms" className="bg-cream py-8 lg:py-12 overflow-hidden relative">
-        <div className="px-6 lg:px-12 mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-6 max-w-[100rem] mx-auto">
+      {/* Rooms - Stacked Carousel */}
+      <section id="rooms" className="bg-cream py-32 lg:py-52 overflow-hidden relative">
+        {/* Abstract Glows */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 -left-40 w-[40rem] h-[40rem] bg-gold/10 rounded-full blur-[150px]" />
+          <div className="absolute bottom-1/4 -right-40 w-[40rem] h-[40rem] bg-burgundy/5 rounded-full blur-[150px]" />
+        </div>
+
+        <div className="px-6 lg:px-12 mb-32 text-center max-w-5xl mx-auto relative z-10">
           <ScrollReveal>
-            <span className="font-label font-medium text-xs text-burgundy tracking-[0.25em] mb-4 block uppercase">Accommodations</span>
-            <h2 className="font-display font-medium text-4xl lg:text-6xl text-burgundy tracking-tight">Your Private Domain</h2>
+            <span className="font-label font-medium text-xs text-gold tracking-[0.5em] mb-8 block uppercase">Private Sanctuary</span>
+            <h2 className="font-display font-medium text-6xl lg:text-9xl text-burgundy tracking-tighter mb-12">Your Private Domain</h2>
+            <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
           </ScrollReveal>
         </div>
 
-        <div className="relative max-w-[100rem] mx-auto group">
-          <div className="overflow-hidden px-6 lg:px-12" ref={emblaRef}>
-            <div className="flex pb-12 pt-4">
-              {[
-                { name: "The Diamond Suite", desc: "The absolute pinnacle of luxury living with 3,200 sq. ft. of privacy, a saltwater infinity pool, and 24h butler service.", img: "/Resortphoto/suite_diamond.webp", size: "3,200 sq.ft", guests: "Up to 4", feature: "Infinity Pool", badge: "SIGNATURE" },
-                { name: "The Maharaja Chamber", desc: "A tribute to regal heritage, adorned with antique furnishings and silk tapestries, offering a glimpse into royal past.", img: "/Resortphoto/suite_maharaja.webp", size: "1,200 sq.ft", guests: "Up to 3", feature: "Regal Decor" },
-                { name: "Grand Deluxe Room", desc: "Refined elegance overlooking the serene courtyard, featuring hand-woven linens and artisanal touches.", img: "/Resortphoto/suite_deluxe.webp", size: "650 sq.ft", guests: "Up to 2", feature: "Courtyard View" },
-                { name: "Executive Oasis Suite", desc: "The perfect blend of productivity and relaxation, featuring a private study and a spa-inspired marble bathroom.", img: "/Resortphoto/suite_executive.webp", size: "850 sq.ft", guests: "Up to 2", feature: "Private Study" },
-              ].map((room, i) => (
-                <div key={room.name} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333333%] min-w-0 px-3 sm:px-4">
-                  <ScrollReveal type="scale" delay={i * 100}>
-                    <div className="bg-burgundy rounded-[2rem] overflow-hidden group/card relative hover:-translate-y-3 hover:shadow-[0_25px_50px_rgba(61,12,30,0.3)] transition-all duration-[600ms] ease-luxury flex flex-col h-full border border-transparent hover:border-gold/30">
-                      <div className="relative h-72 lg:h-[26rem] overflow-hidden">
-                        <img src={room.img} alt={room.name} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover/card:scale-[1.05] transition-transform duration-[1.2s] ease-luxury opacity-90 group-hover/card:opacity-100" />
-                        <div className="absolute inset-0 bg-burgundy/30 group-hover/card:bg-transparent transition-colors duration-[1s] ease-luxury" />
-                        {room.badge && (
-                          <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md text-cream font-label font-semibold text-xs px-4 py-2 rounded-full border border-white/20 flex items-center gap-2 shadow-sm">
-                            <Crown className="w-3 h-3 text-gold" /> {room.badge}
-                          </div>
-                        )}
-                      </div>
-                      <div className="p-6 sm:p-8 flex flex-col flex-1">
-                        <h3 className="font-display font-medium italic text-2xl sm:text-3xl text-cream mb-2 tracking-tight group-hover/card:text-gold transition-colors duration-500 ease-luxury">{room.name}</h3>
-                        <p className="font-body text-sm sm:text-base text-cream/70 mb-4 sm:mb-6 line-clamp-2">{room.desc}</p>
-                        <div className="flex gap-4 sm:gap-6 mb-6 sm:mb-8 border-t border-cream/10 pt-6 mt-auto justify-between">
-                          <div className="flex flex-col items-center gap-1 text-cream text-[10px] uppercase tracking-widest opacity-60">
-                            <span>{room.size}</span>
-                          </div>
-                          <div className="flex flex-col items-center gap-1 text-cream text-[10px] uppercase tracking-widest opacity-60">
-                            <span>{room.guests}</span>
-                          </div>
-                          <div className="flex flex-col items-center gap-1 text-cream text-[10px] uppercase tracking-widest opacity-60">
-                            <span>{room.feature}</span>
-                          </div>
-                        </div>
-                        <a href="tel:+918092719700" className="w-full bg-transparent border border-cream/30 text-cream font-label font-semibold text-xs tracking-[0.2em] py-4 rounded-xl hover:bg-cream hover:border-cream hover:text-burgundy transition-all duration-500 ease-luxury flex items-center justify-center gap-2 btn-shimmer hover:-translate-y-[2px] hover:scale-[1.02] active:scale-[0.98]">
-                          <span className="relative z-10 flex items-center gap-2">CALL NOW <ArrowRight className="w-4 h-4" /></span>
-                        </a>
-                      </div>
-                    </div>
-                  </ScrollReveal>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Carousel Controls */}
-          <div className="flex justify-center items-center gap-6 mt-8">
-            <button
-              onClick={scrollPrev}
-              className="w-10 h-10 rounded-full bg-burgundy/5 border border-burgundy/10 flex items-center justify-center text-burgundy hover:bg-gold hover:text-burgundy transition-all duration-500"
-              aria-label="Previous room"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <div className="flex gap-3">
-              {[0, 1, 2, 3].map((index) => (
-                <button
-                  key={index}
-                  onClick={() => emblaApi?.scrollTo(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-500 ${selectedIndex === index ? "bg-gold w-8" : "bg-burgundy/20"}`}
-                />
-              ))}
-            </div>
-            <button
-              onClick={scrollNext}
-              className="w-10 h-10 rounded-full bg-burgundy/5 border border-burgundy/10 flex items-center justify-center text-burgundy hover:bg-gold hover:text-burgundy transition-all duration-500"
-              aria-label="Next room"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+        <div className="relative max-w-[120rem] mx-auto h-[600px] lg:h-[800px] flex items-center justify-center px-6 relative z-10">
+          <StackedCarousel slides={[
+            { name: "The Diamond Suite", desc: "The absolute pinnacle of luxury living with 3,200 sq. ft. of privacy, a saltwater infinity pool, and 24h butler service.", img: "/Resortphoto/suite_diamond.webp", size: "3,200 sq.ft", guests: "Up to 4", feature: "Infinity Pool", badge: "SIGNATURE" },
+            { name: "The Maharaja Chamber", desc: "A tribute to regal heritage, adorned with antique furnishings and silk tapestries, offering a glimpse into royal past.", img: "/Resortphoto/suite_maharaja.webp", size: "1,200 sq.ft", guests: "Up to 3", feature: "Regal Decor" },
+            { name: "Grand Deluxe Room", desc: "Refined elegance overlooking the serene courtyard, featuring hand-woven linens and artisanal touches.", img: "/Resortphoto/suite_deluxe.webp", size: "650 sq.ft", guests: "Up to 2", feature: "Courtyard View" },
+            { name: "Executive Oasis Suite", desc: "The perfect blend of productivity and relaxation, featuring a private study and a spa-inspired marble bathroom.", img: "/Resortphoto/suite_executive.webp", size: "850 sq.ft", guests: "Up to 2", feature: "Private Study" },
+          ]} />
         </div>
       </section>
 
