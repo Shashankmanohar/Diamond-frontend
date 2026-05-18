@@ -7,6 +7,7 @@ interface SEOProps {
   image?: string;
   url?: string;
   type?: string;
+  noindex?: boolean;
 }
 
 const SEO = ({ 
@@ -15,7 +16,8 @@ const SEO = ({
   keywords = 'luxury resort, spa, villas, fine dining, vacation, retreat',
   image = '/og-image.jpg', // Default OG image
   url = window.location.href,
-  type = 'website'
+  type = 'website',
+  noindex = false
 }: SEOProps) => {
   const siteTitle = 'Diamond Resort & Spa';
   const fullTitle = title.includes(siteTitle) ? title : `${title} | ${siteTitle}`;
@@ -27,6 +29,13 @@ const SEO = ({
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="google-site-verification" content="0C56lIu4UNJRBsJXsD0xEIbKGbdNQO-d8OQgxfCyRAw" />
+      
+      {/* Robots Crawl Directives */}
+      {noindex ? (
+        <meta name="robots" content="noindex, nofollow" />
+      ) : (
+        <meta name="robots" content="index, follow" />
+      )}
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />

@@ -8,6 +8,7 @@ const NotFound = () => {
       <SEO
         title="404 - Sanctuary Not Found | Diamond Resort & Spa"
         description="The page you are looking for has vanished into the mist. Return to the main sanctuary."
+        noindex={true}
       />
       <div className="text-center max-w-lg">
         <Diamond className="w-16 h-16 text-gold mb-8 mx-auto animate-float-premium" />

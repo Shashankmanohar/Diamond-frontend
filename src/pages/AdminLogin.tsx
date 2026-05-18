@@ -46,6 +46,7 @@ const AdminLogin = () => {
         title="Admin Login | Diamond Resort & Spa"
         description="Secure access to the Diamond Resort administration portal."
         keywords="admin login, resort management, Diamond Resort portal"
+        noindex={true}
       />
       <div className="w-full max-w-md">
         <div className="text-center mb-10">

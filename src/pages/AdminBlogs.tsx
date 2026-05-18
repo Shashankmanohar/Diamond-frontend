@@ -543,6 +543,7 @@ const AdminBlogs = () => {
       <SEO
         title="Manage Blogs | Diamond Resort & Spa"
         description="Admin panel for managing resort blogs."
+        noindex={true}
       />
 
       {/* Header */}

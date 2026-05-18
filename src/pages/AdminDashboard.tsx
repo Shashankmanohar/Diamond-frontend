@@ -170,6 +170,7 @@ const AdminDashboard = () => {
         title="Admin Dashboard | Diamond Resort & Spa"
         description="Manage enquiries and bookings for Diamond Resort & Spa."
         keywords="admin dashboard, resort management, enquiry management"
+        noindex={true}
       />
       {/* Header */}
       <header className="sticky top-0 z-50 bg-primary/95 backdrop-blur-xl border-b border-primary-foreground/10 px-4 lg:px-8 py-4 flex items-center justify-between">
