@@ -55,7 +55,7 @@ const ExperienceDetail = () => {
       />
       <Navbar />
       
-      <header className="relative w-full h-[60vh] min-h-[500px] overflow-hidden flex items-center justify-center pt-24">
+      <header className="relative w-full min-h-[60vh] overflow-hidden flex items-center justify-center pt-28 lg:pt-36 pb-20">
         <div className="absolute inset-0 z-0 bg-primary/20">
           <img
             src={data.image}

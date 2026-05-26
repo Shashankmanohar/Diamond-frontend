@@ -109,7 +109,7 @@ const Dining = () => {
       <Navbar />
 
       {/* ───── Hero ───── */}
-      <header className="relative w-full h-[100svh] min-h-[600px] overflow-hidden flex items-center justify-center">
+      <header className="relative w-full h-[100dvh] overflow-hidden flex flex-col justify-between pt-24 lg:pt-32 pb-32 lg:pb-36 bg-primary">
         <div className="absolute inset-0 z-0 bg-primary overflow-hidden">
           <img
             src={cateringImages.hero}
@@ -120,11 +120,11 @@ const Dining = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/40 to-primary/90" />
         </div>
 
-        <div className="relative z-20 w-full px-5 lg:px-12 flex flex-col items-center text-center mt-12 lg:mt-0">
+        <div className="relative z-20 w-full px-5 lg:px-12 flex flex-col items-center justify-center text-center flex-grow">
           <div className="overflow-hidden mb-6">
             <div className="flex items-center gap-4 text-accent" style={{ animation: "heavyRevealUp 1.2s var(--ease-luxury) 0.8s both" }}>
               <Utensils className="w-5 h-5" />
-              <span className="font-label font-medium text-xs tracking-[0.3em] uppercase">Premium Catering</span>
+              <span className="font-label font-semibold text-sm sm:text-base tracking-[0.3em] uppercase">Premium Catering</span>
               <Utensils className="w-5 h-5" />
             </div>
           </div>
@@ -161,13 +161,13 @@ const Dining = () => {
 
         <div className="max-w-5xl mx-auto relative z-10">
           <ScrollReveal className="text-center mb-16">
-            <span className="font-label font-semibold text-xs text-foreground tracking-[0.25em] mb-4 block uppercase">Our Philosophy</span>
+            <span className="font-label font-bold text-sm sm:text-base text-foreground tracking-[0.25em] mb-4 block uppercase">Our Philosophy</span>
             <h2 className="font-display font-light italic text-foreground tracking-tight leading-tight mb-8" style={{ fontSize: "clamp(1.75rem, 5vw, 3.5rem)" }}>
               "Gastronomy is the art of using food to create happiness, and we elevate it into a legacy of taste."
             </h2>
             <div className="flex items-center justify-center gap-4">
               <div className="w-12 h-[1px] bg-foreground/30" />
-              <p className="font-label font-semibold text-xs text-foreground tracking-[0.25em] uppercase">The Diamond Resort</p>
+              <p className="font-label font-bold text-xs sm:text-sm text-foreground tracking-[0.25em] uppercase">The Diamond Resort</p>
               <div className="w-12 h-[1px] bg-foreground/30" />
             </div>
           </ScrollReveal>
@@ -187,13 +187,13 @@ const Dining = () => {
               </p>
               <div className="flex flex-wrap gap-6">
                 {[
-                  { icon: <ChefHat className="w-5 h-5" />, label: "Executive Chef Led" },
-                  { icon: <Star className="w-5 h-5" />, label: "Fully Customizable" },
-                  { icon: <Users className="w-5 h-5" />, label: "50–2000 Guests" },
+                  { icon: <ChefHat className="w-6 h-6" />, label: "Executive Chef Led" },
+                  { icon: <Star className="w-6 h-6" />, label: "Fully Customizable" },
+                  { icon: <Users className="w-6 h-6" />, label: "50–2000 Guests" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-2 group">
                     <span className="text-accent group-hover:-translate-y-1 group-hover:scale-110 transition-all duration-500 ease-luxury">{item.icon}</span>
-                    <span className="font-label font-semibold text-xs text-foreground tracking-widest uppercase">{item.label}</span>
+                    <span className="font-label font-semibold text-xs sm:text-sm tracking-widest uppercase text-foreground">{item.label}</span>
                   </div>
                 ))}
               </div>
@@ -210,7 +210,7 @@ const Dining = () => {
       <section className="bg-primary py-24 lg:py-32 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-5 lg:px-12">
           <ScrollReveal className="text-center mb-16">
-            <span className="font-label font-semibold text-xs text-accent tracking-[0.25em] mb-4 block uppercase">What We Offer</span>
+            <span className="font-label font-bold text-sm sm:text-base text-accent tracking-[0.25em] mb-4 block uppercase">What We Offer</span>
             <h2 className="font-display font-medium text-primary-foreground tracking-tight" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}>
               Our Catering Services
             </h2>

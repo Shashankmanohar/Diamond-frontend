@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 max-w-7xl mx-auto mb-16">
           {/* Brand */}
           <div className="flex flex-col items-center lg:items-start lg:col-span-1">
-            <img src="/DiamondResort.webp" alt="Diamond Resort" className="w-40 h-40 object-contain mb-4 hover:scale-110 transition-transform duration-700 ease-luxury" />
+            <img src="/DiamondResort.png" alt="Diamond Resort" className="w-40 h-40 object-contain mb-4 hover:scale-110 transition-transform duration-700 ease-luxury" />
             <span className="font-label font-medium text-accent text-xs tracking-[0.25em] mb-4 block uppercase">
               DIAMOND RESORT
             </span>

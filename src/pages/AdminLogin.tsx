@@ -50,7 +50,7 @@ const AdminLogin = () => {
       />
       <div className="w-full max-w-md">
         <div className="text-center mb-10">
-          <img src="/logo.png" alt="Diamond Resort" className="w-40 h-40 object-contain mx-auto mb-4" />
+          <img src="/DiamondResort.png" alt="Diamond Resort" className="w-40 h-40 object-contain mx-auto mb-4" />
           <h1 className="font-display text-3xl text-primary-foreground tracking-tight mb-2">Admin Portal</h1>
           <p className="font-body text-primary-foreground/60">Diamond Resort Management</p>
         </div>

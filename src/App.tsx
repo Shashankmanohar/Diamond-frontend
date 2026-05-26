@@ -17,6 +17,7 @@ const ExperienceDetail = lazy(() => import("./pages/ExperienceDetail"));
 const Events = lazy(() => import("./pages/Events"));
 const Gallery = lazy(() => import("./pages/Gallery"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const About = lazy(() => import("./pages/About"));
 const Sitemap = lazy(() => import("./pages/Sitemap"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
@@ -45,6 +46,7 @@ const App = () => (
                 <Route path="/experiences/:type" element={<ExperienceDetail />} />
                 <Route path="/events/:type" element={<Events />} />
                 <Route path="/gallery" element={<Gallery />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/sitemap" element={<Sitemap />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogDetail />} />

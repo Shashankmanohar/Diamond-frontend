@@ -33,7 +33,7 @@ const Navbar = () => {
       {/* Mobile Logo Bar (Top) */}
       <div className={`lg:hidden fixed top-0 left-0 w-full z-[4000] transition-all duration-500 flex justify-between items-center h-20 px-4 ${scrolled ? "bg-primary/90 backdrop-blur-3xl border-b border-white/5" : "bg-transparent"}`}>
         <Link to="/" className="flex items-center gap-3">
-          <img src="/DiamondResort.webp" alt="Diamond Resort" className="w-12 h-12 object-contain" />
+          <img src="/DiamondResort.png" alt="Diamond Resort" className="w-12 h-12 object-contain" />
           <span className={`font-label font-medium text-[10px] tracking-[0.2em] transition-colors ${!scrolled && path === '/gallery' ? 'text-primary' : 'text-ring'}`}>
             DIAMOND RESORT
           </span>
@@ -152,7 +152,7 @@ const Navbar = () => {
       >
         <div className="flex-1 flex items-center">
           <Link to="/" className="flex items-center gap-4 group">
-            <img src="/DiamondResort.webp" alt="Diamond Resort" className="w-28 h-28 object-contain group-hover:scale-110 transition-transform duration-700 ease-luxury" />
+            <img src="/DiamondResort.png" alt="Diamond Resort" className="w-28 h-28 object-contain group-hover:scale-110 transition-transform duration-700 ease-luxury" />
             <span className="font-label font-medium text-ring text-base tracking-[0.35em] group-hover:tracking-[0.4em] transition-all duration-500 ease-luxury">
               DIAMOND RESORT
             </span>

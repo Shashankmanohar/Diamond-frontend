@@ -151,8 +151,8 @@ const Index = () => {
       <Navbar />
 
       {/* Hero */}
-      <header className="relative w-full h-screen min-h-[600px] overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0 z-0 overflow-hidden bg-burgundy">
+      <header className="relative w-full h-[100dvh] overflow-hidden flex flex-col justify-between pt-24 lg:pt-32 pb-6 bg-burgundy">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             src="/Resortphoto/hero_home.webp"
             alt="The Diamond Resort - Best Marriage Hall in Bihar Sharif"
@@ -163,8 +163,8 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-burgundy/80 via-transparent to-burgundy/90" />
         </div>
 
-        <div className="relative z-20 w-full px-6 lg:px-12 flex flex-col items-center text-center max-w-5xl mx-auto">
-          <div className="overflow-hidden mb-8" style={{ animation: "heavyRevealUp 1.2s var(--ease-luxury) 0.6s both" }}>
+        <div className="relative z-20 w-full px-6 lg:px-12 flex flex-col items-center justify-center text-center max-w-5xl mx-auto flex-grow">
+          <div className="overflow-hidden mb-4 lg:mb-6" style={{ animation: "heavyRevealUp 1.2s var(--ease-luxury) 0.6s both" }}>
             <div className="inline-flex items-center gap-3 px-6 py-2 border border-gold/30 rounded-sm backdrop-blur-md bg-white/5">
               <span className="text-gold text-[10px]">◆</span>
               <span className="font-label text-gold text-[11px] tracking-[0.4em] uppercase font-bold">Diamond Resort</span>
@@ -172,7 +172,7 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="overflow-hidden mb-4">
+          <div className="overflow-hidden mb-2 lg:mb-3">
             <h1 
               className="font-label text-gold text-xs md:text-sm tracking-[0.3em] uppercase font-semibold block"
               style={{ animation: "heavyRevealUp 1.2s var(--ease-luxury) 0.8s both" }}
@@ -181,22 +181,22 @@ const Index = () => {
             </h1>
           </div>
 
-          <div className="font-display font-normal text-5xl md:text-7xl lg:text-8xl leading-[1.1] text-cream tracking-tight mb-8">
-            <div className="overflow-hidden pb-2">
+          <div className="font-display font-normal text-3xl md:text-5xl lg:text-7xl xl:text-8xl leading-[1.1] text-cream tracking-tight mb-4 lg:mb-6">
+            <div className="overflow-hidden pb-1">
               <span className="block" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1s both" }}>Where Every Wedding</span>
             </div>
-            <div className="overflow-hidden pb-2">
+            <div className="overflow-hidden pb-1">
               <span className="block italic text-gold shimmer-text" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.2s both" }}>Becomes Legend</span>
             </div>
           </div>
 
-          <div className="overflow-hidden mb-12 max-w-3xl mx-auto">
-            <p className="font-body text-lg md:text-xl text-cream/80 leading-relaxed font-light" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.4s both" }}>
+          <div className="overflow-hidden mb-6 lg:mb-8 max-w-3xl mx-auto">
+            <p className="font-body text-sm md:text-base lg:text-lg text-cream/80 leading-relaxed font-light" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.4s both" }}>
               Bihar's most celebrated wedding resort and banquet venue in Belsar, Nalanda — where royal décor, lush lawns, and flawless hospitality unite to create memories that last a lifetime.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-6" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.6s both" }}>
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6" style={{ animation: "heavyRevealUp 1.4s var(--ease-luxury) 1.6s both" }}>
             <a href="tel:+918092719700" className="group bg-gold text-burgundy font-label font-bold text-[10px] tracking-[0.3em] px-10 py-5 rounded-full hover:bg-white transition-all duration-500 flex items-center gap-3 shadow-2xl">
               BOOK YOUR DATE <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -206,17 +206,14 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-8 w-full px-6 lg:px-12 flex flex-col items-center gap-8 z-20">
+        <div className="relative z-20 w-full px-6 lg:px-12 flex flex-col items-center gap-6 mt-auto pb-4">
           <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
-          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 text-cream/60 font-label text-[10px] tracking-[0.25em] uppercase" style={{ animation: "fadeIn 2s ease-out 2s both" }}>
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 text-cream/90 font-label text-xs sm:text-sm md:text-base tracking-[0.35em] uppercase transition-colors duration-500 hover:text-gold cursor-default" style={{ animation: "fadeIn 2s ease-out 2s both" }}>
             <span>Belsar, Nalanda</span>
-            <span className="text-gold/40">◆</span>
+            <span className="text-gold">◆</span>
             <span>Near Bihar Sharif</span>
-            <span className="text-gold/40">◆</span>
+            <span className="text-gold">◆</span>
             <span>Bihar</span>
-          </div>
-          <div className="animate-bounce text-gold/60 mt-2">
-            <ArrowDown className="w-6 h-6" />
           </div>
         </div>
       </header>
@@ -228,7 +225,7 @@ const Index = () => {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-gold rounded-full" />
             </div>
             <ScrollReveal className="relative z-10">
-              <span className="font-label font-bold text-[10px] tracking-[0.4em] text-gold uppercase mb-6 block">The Philosophy</span>
+              <span className="font-label font-bold text-xs sm:text-sm tracking-[0.4em] text-gold uppercase mb-6 block">The Philosophy</span>
               <h2 className="font-display font-medium text-4xl lg:text-7xl text-burgundy leading-[1.05] mb-10 tracking-tighter">
                 A Sanctuary for the <br />
                 <em className="font-light italic text-gold shimmer-text">Discerning Soul.</em>
@@ -236,21 +233,21 @@ const Index = () => {
               <p className="font-body text-xl lg:text-2xl text-burgundy/90 leading-relaxed font-light mb-12">
                 At The Diamond Resort, we believe luxury isn't just about opulence; it's about the profound sense of peace found in a perfectly curated sanctuary.
               </p>
-              <div className="flex flex-wrap gap-12 py-8 border-y border-gold/20 mb-8">
+              <div className="flex flex-wrap gap-12 lg:gap-16 py-8 border-y border-gold/20 mb-8">
                 <div className="flex flex-col">
-                  <span className="font-display text-4xl text-burgundy">48</span>
-                  <span className="font-label text-[10px] tracking-[0.2em] text-gold uppercase mt-2">Suites</span>
+                  <span className="font-display text-5xl lg:text-6xl text-burgundy font-medium tracking-tight">48</span>
+                  <span className="font-label text-xs sm:text-sm tracking-[0.2em] text-gold uppercase mt-2">Suites</span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-display text-4xl text-burgundy">03</span>
-                  <span className="font-label text-[10px] tracking-[0.2em] text-gold uppercase mt-2">Venues</span>
+                  <span className="font-display text-5xl lg:text-6xl text-burgundy font-medium tracking-tight">03</span>
+                  <span className="font-label text-xs sm:text-sm tracking-[0.2em] text-gold uppercase mt-2">Venues</span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-display text-4xl text-burgundy">5.0</span>
-                  <span className="font-label text-[10px] tracking-[0.2em] text-gold uppercase mt-2">Rating</span>
+                  <span className="font-display text-5xl lg:text-6xl text-burgundy font-medium tracking-tight">5.0</span>
+                  <span className="font-label text-xs sm:text-sm tracking-[0.2em] text-gold uppercase mt-2">Rating</span>
                 </div>
               </div>
-              <Link to="/suites" className="font-label font-bold text-[10px] tracking-[0.3em] uppercase text-burgundy hover:text-gold transition-colors inline-block pt-4 border-b border-gold/50">Explore Suites</Link>
+              <Link to="/suites" className="font-label font-bold text-xs sm:text-sm tracking-[0.3em] uppercase text-burgundy hover:text-gold transition-colors inline-block pt-4 border-b border-gold/50">Explore Suites</Link>
             </ScrollReveal>
           </div>
           <ScrollReveal type="scale" className="w-full lg:w-1/2 h-[50vh] lg:h-auto overflow-hidden group">
@@ -269,7 +266,7 @@ const Index = () => {
 
         <div className="px-6 lg:px-12 mb-32 text-center max-w-5xl mx-auto relative z-10">
           <ScrollReveal>
-            <span className="font-label font-medium text-xs text-gold tracking-[0.5em] mb-8 block uppercase">Private Sanctuary</span>
+            <span className="font-label font-semibold text-sm sm:text-base text-gold tracking-[0.5em] mb-8 block uppercase">Private Sanctuary</span>
             <h2 className="font-display font-medium text-6xl lg:text-9xl text-burgundy tracking-tighter mb-12">Your Private Domain</h2>
             <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
           </ScrollReveal>
@@ -289,7 +286,7 @@ const Index = () => {
         <div className="flex flex-col lg:flex-row items-stretch min-h-[70vh]">
           <div className="w-full lg:w-1/2 p-10 lg:p-20 flex flex-col justify-center">
             <ScrollReveal className="mb-16">
-              <span className="font-label font-semibold text-xs text-burgundy tracking-[0.25em] mb-4 block uppercase">The Facilities</span>
+              <span className="font-label font-bold text-sm sm:text-base text-burgundy tracking-[0.25em] mb-4 block uppercase">The Facilities</span>
               <h2 className="font-display font-medium text-4xl lg:text-6xl text-burgundy tracking-tight mb-8">An Oasis of Indulgence</h2>
               <p className="font-body text-lg text-burgundy/70 leading-relaxed mb-12">
                 Every corner of Diamond Resort is designed to nourish the body and soul. From our signature spa to the serene library.
@@ -298,17 +295,17 @@ const Index = () => {
 
             <div className="grid grid-cols-2 gap-8 lg:gap-y-12">
               {[
-                { icon: <Sparkles className="w-6 h-6" />, title: "Royal Spa", desc: "Ancient wellness." },
-                { icon: <Flower2 className="w-6 h-6" />, title: "Infinity Pool", desc: "Heated sanctuary." },
-                { icon: <Leaf className="w-6 h-6" />, title: "Gardens", desc: "Private reflection." },
-                { icon: <Dumbbell className="w-6 h-6" />, title: "Fitness", desc: "Expert guidance." },
+                { icon: <Sparkles className="w-7 h-7" />, title: "Royal Spa", desc: "Ancient wellness." },
+                { icon: <Flower2 className="w-7 h-7" />, title: "Infinity Pool", desc: "Heated sanctuary." },
+                { icon: <Leaf className="w-7 h-7" />, title: "Gardens", desc: "Private reflection." },
+                { icon: <Dumbbell className="w-7 h-7" />, title: "Fitness", desc: "Expert guidance." },
               ].map((a, i) => (
                 <ScrollReveal key={a.title} delay={i * 100} className="group flex flex-col items-start">
-                  <div className="w-12 h-12 rounded-full border border-burgundy/10 flex items-center justify-center mb-4 group-hover:bg-burgundy transition-all duration-500">
+                  <div className="w-14 h-14 rounded-full border border-burgundy/10 flex items-center justify-center mb-4 group-hover:bg-burgundy transition-all duration-500">
                     <span className="text-burgundy group-hover:text-gold transition-all duration-500">{a.icon}</span>
                   </div>
-                  <h3 className="font-display font-medium text-lg text-burgundy mb-1">{a.title}</h3>
-                  <p className="font-body text-burgundy/60 text-[10px] uppercase tracking-widest">{a.desc}</p>
+                  <h3 className="font-display font-semibold text-xl sm:text-2xl text-burgundy mb-2">{a.title}</h3>
+                  <p className="font-body text-burgundy/70 text-xs sm:text-sm tracking-wider uppercase">{a.desc}</p>
                 </ScrollReveal>
               ))}
             </div>
@@ -669,7 +666,7 @@ const Index = () => {
         </div>
 
         <ScrollReveal className="relative z-10 px-6 flex flex-col items-center">
-          <img src="/DiamondResort.webp" alt="Diamond Resort" className="w-48 h-48 lg:w-64 lg:h-64 object-contain mb-6 animate-float-premium" />
+          <img src="/DiamondResort.png" alt="Diamond Resort" className="w-48 h-48 lg:w-64 lg:h-64 object-contain mb-6 animate-float-premium" />
           <h2 className="font-display font-light text-5xl lg:text-7xl text-cream leading-tight mb-8 tracking-tight text-glow">Secure Your Place<br />Among the Stars</h2>
           <a href="tel:+918092719700" className="hover-lift bg-cream text-burgundy font-label font-semibold text-sm tracking-[0.2em] px-10 py-5 rounded-full transition-all duration-500 ease-luxury flex items-center gap-3 btn-shimmer group border border-transparent hover:border-gold/50">
             <span className="relative z-10">CALL TO BOOK</span>

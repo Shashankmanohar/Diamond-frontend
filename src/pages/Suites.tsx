@@ -18,7 +18,7 @@ const Suites = () => {
       <Navbar />
 
       {/* Hero */}
-      <header className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+      <header className="relative h-[100dvh] w-full overflow-hidden flex flex-col justify-between pt-24 lg:pt-32 pb-20 bg-burgundy">
         <div className="absolute inset-0 z-0">
           <img
             src="/Resortphoto/hero_suites.webp"
@@ -30,10 +30,10 @@ const Suites = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-burgundy/70 via-burgundy/30 to-burgundy" />
         </div>
 
-        <div className="relative z-10 text-center px-6 mt-12">
+        <div className="relative z-10 text-center px-6 flex-grow flex flex-col justify-center items-center">
           <div className="overflow-hidden mb-4">
             <span
-              className="block font-medium text-xs tracking-[0.5em] text-gold-light uppercase opacity-0"
+              className="block font-semibold text-sm sm:text-base tracking-[0.5em] text-gold-light uppercase opacity-0"
               style={{ animation: "contentReveal 1.8s 1.5s forwards" }}
             >
               Private Sanctuaries
@@ -85,7 +85,7 @@ const Suites = () => {
 
           <ScrollReveal className="lg:col-span-5">
             <div className="space-y-8">
-              <span className="text-gold font-medium text-xs tracking-[0.4em] uppercase block">The Crown Jewel</span>
+              <span className="text-gold font-semibold text-sm sm:text-base tracking-[0.4em] uppercase block">The Crown Jewel</span>
               <h3 className="font-display text-4xl lg:text-6xl text-burgundy tracking-tight">Diamond Grand Suite</h3>
               <p className="text-burgundy/70 text-lg leading-relaxed">
                 A masterwork of interior architecture, featuring a private saltwater infinity pool, a curated collection of local Bihar heritage artifacts, and a sprawling terrace that offers an unobstructed view of the mystic Gangetic sunrise.
@@ -93,20 +93,20 @@ const Suites = () => {
 
               <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-10 border-y border-burgundy/10">
                 <div>
-                  <span className="block text-xs tracking-[0.3em] uppercase text-gold mb-2">Living Space</span>
-                  <span className="text-lg">3,200 SQ FT</span>
+                  <span className="block text-xs sm:text-sm tracking-[0.3em] font-semibold uppercase text-gold mb-2">Living Space</span>
+                  <span className="text-lg sm:text-xl font-medium">3,200 SQ FT</span>
                 </div>
                 <div>
-                  <span className="block text-xs tracking-[0.3em] uppercase text-gold mb-2">Bespoke Service</span>
-                  <span className="text-lg">24h Butler</span>
+                  <span className="block text-xs sm:text-sm tracking-[0.3em] font-semibold uppercase text-gold mb-2">Bespoke Service</span>
+                  <span className="text-lg sm:text-xl font-medium">24h Butler</span>
                 </div>
                 <div>
-                  <span className="block text-xs tracking-[0.3em] uppercase text-gold mb-2">Capacity</span>
-                  <span className="text-lg">4 Guests</span>
+                  <span className="block text-xs sm:text-sm tracking-[0.3em] font-semibold uppercase text-gold mb-2">Capacity</span>
+                  <span className="text-lg sm:text-xl font-medium">4 Guests</span>
                 </div>
                 <div>
-                  <span className="block text-xs tracking-[0.3em] uppercase text-gold mb-2">Primary View</span>
-                  <span className="text-lg">River Ganges</span>
+                  <span className="block text-xs sm:text-sm tracking-[0.3em] font-semibold uppercase text-gold mb-2">Primary View</span>
+                  <span className="text-lg sm:text-xl font-medium">River Ganges</span>
                 </div>
               </div>
 

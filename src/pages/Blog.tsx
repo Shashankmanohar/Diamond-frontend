@@ -80,7 +80,7 @@ const Blog = () => {
       <Navbar />
 
       {/* Cinematic Cover Section */}
-      <header className="relative h-[80vh] flex items-center overflow-hidden pt-20 bg-burgundy">
+      <header className="relative min-h-[80vh] flex items-center overflow-hidden pt-32 pb-20 bg-burgundy">
         <div className="absolute inset-0 z-0 opacity-20" 
              style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")' }} />
         <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,rgba(201,168,76,0.15)_0%,transparent_70%)]" />
