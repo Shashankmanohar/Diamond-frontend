@@ -16,10 +16,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 max-w-7xl mx-auto mb-16">
           {/* Brand */}
           <div className="flex flex-col items-center lg:items-start lg:col-span-1">
-            <img src="/DiamondResort.png" alt="Diamond Resort" className="w-40 h-40 object-contain mb-4 hover:scale-110 transition-transform duration-700 ease-luxury" />
-            <span className="font-label font-medium text-accent text-xs tracking-[0.25em] mb-4 block uppercase">
-              DIAMOND RESORT
-            </span>
+            <Link to="/" className="flex flex-col items-center lg:items-start group">
+              <img src="/DiamondResort.png" alt="Diamond Resort" className="w-40 h-40 object-contain mb-4 group-hover:scale-110 transition-transform duration-700 ease-luxury" />
+              <span className="font-label font-medium text-accent text-xs tracking-[0.25em] mb-4 block uppercase">
+                DIAMOND RESORT
+              </span>
+            </Link>
             <p className="font-body text-primary-foreground/60 text-sm max-w-[200px]">
               Bihar's finest ultra-luxury sanctuary.
             </p>
@@ -32,6 +34,7 @@ const Footer = () => {
                 Explore
               </h5>
               <ul className="flex flex-col items-center lg:items-start gap-4 text-sm font-body text-primary-foreground/60">
+                <li><Link to="/" className="footer-link">Home</Link></li>
                 <li><Link to="/suites" className="footer-link">Suites</Link></li>
                 <li><Link to="/dining" className="footer-link">Catering</Link></li>
                 <li><Link to="/experiences" className="footer-link">Experiences</Link></li>

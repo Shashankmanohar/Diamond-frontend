@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Diamond, LogIn, Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { API_ENDPOINTS } from "@/config";
 import SEO from "@/components/SEO";
@@ -49,11 +49,11 @@ const AdminLogin = () => {
         noindex={true}
       />
       <div className="w-full max-w-md">
-        <div className="text-center mb-10">
-          <img src="/DiamondResort.png" alt="Diamond Resort" className="w-40 h-40 object-contain mx-auto mb-4" />
+        <Link to="/" className="text-center mb-10 block group hover:opacity-90 transition-opacity">
+          <img src="/DiamondResort.png" alt="Diamond Resort" className="w-40 h-40 object-contain mx-auto mb-4 group-hover:scale-105 transition-transform duration-700 ease-luxury" />
           <h1 className="font-display text-3xl text-primary-foreground tracking-tight mb-2">Admin Portal</h1>
           <p className="font-body text-primary-foreground/60">Diamond Resort Management</p>
-        </div>
+        </Link>
 
         <form onSubmit={handleLogin} className="bg-primary-foreground/5 backdrop-blur-xl border border-primary-foreground/10 rounded-3xl p-8 space-y-6">
           {error && (

@@ -200,7 +200,7 @@ const Index = () => {
             <a href="tel:+918092719700" className="group bg-gold text-burgundy font-label font-bold text-[10px] tracking-[0.3em] px-10 py-5 rounded-full hover:bg-white transition-all duration-500 flex items-center gap-3 shadow-2xl">
               BOOK YOUR DATE <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
-            <Link to="/venues" className="font-label text-cream/70 hover:text-gold text-[10px] tracking-[0.3em] border-b border-cream/20 hover:border-gold transition-all duration-500 py-2">
+            <Link to="/suites" className="font-label text-cream/70 hover:text-gold text-[10px] tracking-[0.3em] border-b border-cream/20 hover:border-gold transition-all duration-500 py-2">
               EXPLORE VENUES
             </Link>
           </div>

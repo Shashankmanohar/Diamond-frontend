@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { API_ENDPOINTS } from "@/config";
 import SEO from "@/components/SEO";
 import {
@@ -174,10 +174,10 @@ const AdminDashboard = () => {
       />
       {/* Header */}
       <header className="sticky top-0 z-50 bg-primary/95 backdrop-blur-xl border-b border-primary-foreground/10 px-4 lg:px-8 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <Diamond className="w-6 h-6 text-ring" />
           <span className="font-label font-medium text-xs tracking-[0.2em] text-ring">ADMIN DASHBOARD</span>
-        </div>
+        </Link>
         <div className="flex items-center gap-6">
           <button onClick={() => navigate("/admin/blogs")} className="text-primary-foreground/60 hover:text-ring transition-colors duration-300 font-label text-xs tracking-wider">
             BLOGS
