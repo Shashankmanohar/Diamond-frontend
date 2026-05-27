@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DOMAIN = 'https://diamondresort.in';
-const API_URL = 'http://localhost:5000/api/blogs'; // Default backend port
+const API_URL = `${process.env.VITE_API_BASE_URL || 'http://localhost:5000'}/api/blogs`;
 
 // Current date formatted as YYYY-MM-DD
 const currentDate = new Date().toISOString().split('T')[0];
